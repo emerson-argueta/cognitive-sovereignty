@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 7 · Structure — Cognitive Sovereignty</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --navy:    #0f1923;
+    --navy2:   #162030;
+    --navy3:   #1e2d3d;
+    --navy4:   #243344;
+    --slate:   #2c3e50;
+    --cream:   #f0ead8;
+    --cream2:  #e8dfc8;
+    --warm:    #c8b99a;
+    --accent:  #4a7fa8;
+    --accent2: #6a9fc8;
+    --gold:    #c9a84c;
+    --green:   #4a8c6f;
+    --orange:  #d4732a;
+    --muted:   #6e7e8e;
+    --rule:    rgba(200,185,154,0.15);
+    --sidebar: 260px;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--cream);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── LAYOUT ───────────────────────────────── */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* ── SIDEBAR ──────────────────────────────── */
+  .sidebar {
+    width: var(--sidebar);
+    min-width: var(--sidebar);
+    background: var(--navy2);
+    border-right: 1px solid var(--rule);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar::-webkit-scrollbar { width: 3px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--rule); }
+
+  .sidebar-header {
+    padding: 24px 20px 18px;
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0;
+    background: var(--navy2); z-index: 10;
+  }
+
+  .back-link {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    margin-bottom: 14px;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--accent2); }
+  .back-link::before { content: '←'; font-size: 11px; }
+
+  .sidebar-grade {
+    font-family: var(--font-display);
+    font-size: 2.8rem; font-weight: 900;
+    color: rgba(74,127,168,0.2);
+    line-height: 1;
+  }
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 700;
+    color: var(--cream); line-height: 1.2;
+    margin-top: 2px;
+  }
+  .sidebar-phase {
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.15em;
+    color: var(--accent2); margin-top: 6px;
+  }
+
+  .nav-section { padding: 12px 0 6px; }
+  .nav-label {
+    font-family: var(--font-mono);
+    font-size: 8px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted); padding: 0 20px 6px;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 20px;
+    text-decoration: none; color: var(--warm);
+    font-size: 0.78rem; font-weight: 400;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-item:hover { color: var(--cream); background: rgba(74,127,168,0.08); border-left-color: var(--accent); }
+  .nav-item.active { color: var(--cream); background: rgba(74,127,168,0.12); border-left-color: var(--accent); font-weight: 500; }
+  .nav-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.4; flex-shrink: 0; }
+  .nav-item.active .nav-dot, .nav-item:hover .nav-dot { opacity: 1; }
+  .nav-dot.q1 { background: #6a9fc8; }
+  .nav-dot.q2 { background: #c9a84c; }
+  .nav-dot.q3 { background: #4a8c6f; }
+  .nav-dot.q4 { background: #d4732a; }
+  .nav-divider { height: 1px; background: var(--rule); margin: 6px 20px; }
+
+  .sidebar-footer {
+    margin-top: auto; padding: 14px 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 8px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ── MAIN ─────────────────────────────────── */
+  .main { margin-left: var(--sidebar); flex: 1; }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    background: var(--navy2);
+    padding: 64px 64px 52px;
+    border-bottom: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 100% at 90% 50%, rgba(74,127,168,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 60% at 10% 90%, rgba(74,140,111,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-breadcrumb span { color: var(--accent2); }
+
+  .hero-grade-num {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900; line-height: 0.9;
+    color: rgba(74,127,168,0.15);
+    position: absolute; right: 64px; top: 40px;
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--cream); max-width: 560px;
+    position: relative; z-index: 1;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent2); }
+
+  .hero-sub {
+    font-size: 0.95rem; color: var(--warm);
+    max-width: 520px; margin-top: 16px;
+    font-weight: 300; line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 28px; position: relative; z-index: 1;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 4px 10px; color: var(--warm);
+    background: rgba(255,255,255,0.03);
+  }
+  .tag.highlight { border-color: var(--accent); color: var(--accent2); background: rgba(74,127,168,0.08); }
+
+  .hero-stats {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    margin-top: 36px; padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    position: relative; z-index: 1;
+  }
+  .hero-stat strong {
+    display: block; font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--cream); line-height: 1;
+  }
+  .hero-stat span {
+    font-family: var(--font-mono); font-size: 8px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-top: 3px; display: block;
+  }
+
+  /* ── DAILY SCHEDULE BANNER ────────────────── */
+  .schedule-banner {
+    background: var(--navy3);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 64px;
+    overflow-x: auto;
+  }
+  .schedule-label {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 16px;
+  }
+  .schedule-track {
+    display: flex; align-items: stretch;
+    gap: 2px; min-width: 700px;
+  }
+  .schedule-block {
+    flex: 1; padding: 10px 12px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    background: var(--navy4);
+    position: relative;
+  }
+  .schedule-block.break-block { flex: 0.6; background: rgba(14,25,35,0.6); }
+  .schedule-block.lunch-block { flex: 0.5; background: rgba(14,25,35,0.6); }
+  .schedule-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .schedule-block.session::before { background: var(--accent); }
+  .schedule-block.break-block::before { background: var(--navy3); }
+  .schedule-block.lunch-block::before { background: var(--gold); opacity: 0.4; }
+  .schedule-time {
+    font-family: var(--font-mono); font-size: 8px;
+    color: var(--muted); letter-spacing: 0.08em; margin-bottom: 3px;
+  }
+  .schedule-name {
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--cream); line-height: 1.3;
+  }
+  .schedule-sub {
+    font-size: 0.65rem; color: var(--warm);
+    font-weight: 300; margin-top: 2px;
+  }
+  .schedule-block.break-block .schedule-name { color: var(--muted); font-weight: 400; }
+
+  /* ── SECTIONS ─────────────────────────────── */
+  .content-section {
+    padding: 56px 64px 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-eyebrow {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block;
+    width: 18px; height: 1px; background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--cream); margin-bottom: 8px;
+  }
+  .section-sub {
+    font-family: var(--font-display);
+    font-style: italic; font-size: 0.95rem;
+    color: var(--warm); margin-bottom: 28px;
+  }
+  .section-body { max-width: 760px; }
+  .section-body p {
+    color: var(--warm); font-weight: 300;
+    margin-bottom: 16px; font-size: 0.9rem; line-height: 1.75;
+  }
+  .section-body p strong { color: var(--cream); font-weight: 600; }
+
+  /* ── CALLOUT ──────────────────────────────── */
+  .callout {
+    border-left: 2px solid var(--gold);
+    padding: 14px 20px;
+    background: rgba(201,168,76,0.05);
+    margin: 20px 0; max-width: 760px;
+  }
+  .callout p { font-size: 0.85rem; color: var(--warm); font-weight: 300; line-height: 1.65; margin: 0; }
+  .callout p strong { color: var(--cream); }
+  .callout.blue { border-left-color: var(--accent); background: rgba(74,127,168,0.06); }
+  .callout.warning { border-left-color: var(--orange); background: rgba(212,115,42,0.06); }
+
+  /* ── SKILL PILLARS ────────────────────────── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px; margin: 28px 0;
+  }
+  .pillar-card {
+    background: var(--navy3);
+    padding: 22px 20px;
+    border-top: 2px solid transparent;
+  }
+  .pillar-card.reading  { border-top-color: #6a9fc8; }
+  .pillar-card.grammar  { border-top-color: #c9a84c; }
+  .pillar-card.pattern  { border-top-color: #4a8c6f; }
+  .pillar-card.visual   { border-top-color: #d4732a; }
+  .pillar-card.writing  { border-top-color: #9b7ec8; }
+  .pillar-card.project  { border-top-color: #c8506a; }
+
+  .pillar-icon { font-size: 1.2rem; margin-bottom: 8px; }
+  .pillar-name {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .pillar-time {
+    font-family: var(--font-mono); font-size: 8px;
+    color: var(--muted); letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .pillar-desc { font-size: 0.75rem; color: var(--warm); font-weight: 300; line-height: 1.5; }
+
+  /* ── QUARTER TABS ─────────────────────────── */
+  .quarter-nav {
+    display: flex; gap: 2px;
+    margin-bottom: 0; flex-wrap: wrap;
+  }
+  .q-tab {
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--navy3); color: var(--muted);
+    border: none; cursor: pointer;
+    border-top: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .q-tab:hover { color: var(--cream); }
+  .q-tab.active { color: var(--cream); background: var(--navy4); }
+  .q-tab.q1.active { border-top-color: #6a9fc8; }
+  .q-tab.q2.active { border-top-color: #c9a84c; }
+  .q-tab.q3.active { border-top-color: #4a8c6f; }
+  .q-tab.q4.active { border-top-color: #d4732a; }
+
+  .quarter-panel {
+    display: none;
+    background: var(--navy3);
+    padding: 32px;
+    animation: fadeIn 0.2s ease;
+  }
+  .quarter-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .quarter-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; flex-wrap: wrap;
+    gap: 16px; margin-bottom: 24px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--rule);
+  }
+  .quarter-theme {
+    font-family: var(--font-display);
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .quarter-fallacy {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.12em; color: var(--muted);
+  }
+  .quarter-fallacy span { color: var(--gold); }
+  .quarter-weeks-badge {
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.1em; color: var(--accent2);
+    border: 1px solid var(--accent);
+    padding: 4px 10px; white-space: nowrap;
+    background: rgba(74,127,168,0.08);
+  }
+
+  /* ── WEEK TABLE ───────────────────────────── */
+  .week-table-wrap { overflow-x: auto; }
+  .week-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.75rem; min-width: 780px;
+  }
+  .week-table th {
+    text-align: left;
+    font-family: var(--font-mono); font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); padding: 8px 12px;
+    background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  .week-table th.reading  { color: #6a9fc8; }
+  .week-table th.grammar  { color: #c9a84c; }
+  .week-table th.pattern  { color: #4a8c6f; }
+  .week-table th.visual   { color: #d4732a; }
+  .week-table th.writing  { color: #9b7ec8; }
+  .week-table th.project  { color: #c8506a; }
+
+  .week-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(200,185,154,0.05);
+    color: var(--warm); font-weight: 300;
+    vertical-align: top; line-height: 1.5;
+  }
+  .week-table td:first-child {
+    font-family: var(--font-mono); font-size: 8px;
+    color: var(--muted); white-space: nowrap;
+    padding-top: 12px;
+  }
+  .week-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .week-table td strong { color: var(--cream); font-weight: 600; display: block; margin-bottom: 2px; }
+  .week-table .capstone-row td { background: rgba(74,127,168,0.06); }
+  .week-table .capstone-row td:first-child { color: var(--accent2); }
+
+  /* Metacognitive column */
+  .week-table td.meta-cell {
+    color: rgba(200,185,154,0.5);
+    font-style: italic; font-size: 0.7rem;
+  }
+
+  /* ── HEATMAP THREAD ───────────────────────── */
+  .heatmap-thread {
+    background: var(--navy3);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--orange);
+    padding: 20px 24px; margin: 20px 0;
+    max-width: 760px;
+  }
+  .heatmap-thread h4 {
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .heatmap-thread h4::before {
+    content: '🌡';  font-size: 0.9rem;
+  }
+  .heatmap-thread p {
+    font-size: 0.8rem; color: var(--warm);
+    font-weight: 300; line-height: 1.6; margin-bottom: 8px;
+  }
+  .heatmap-thread p:last-child { margin-bottom: 0; }
+
+  /* ── TRACKS SECTION ───────────────────────── */
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin: 20px 0; max-width: 760px;
+  }
+  .track-block {
+    background: var(--navy3); padding: 20px 18px;
+    border-top: 2px solid transparent;
+  }
+  .track-block.core     { border-top-color: var(--accent); }
+  .track-block.ext      { border-top-color: var(--gold); }
+  .track-block.voc      { border-top-color: var(--green); }
+  .track-block h4 {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 6px;
+  }
+  .track-block .track-label {
+    font-family: var(--font-mono); font-size: 8px;
+    letter-spacing: 0.1em; color: var(--muted);
+    margin-bottom: 10px; text-transform: uppercase;
+  }
+  .track-block ul { list-style: none; }
+  .track-block ul li {
+    font-size: 0.75rem; color: var(--warm);
+    font-weight: 300; padding-left: 12px;
+    position: relative; line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  .track-block ul li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.65rem;
+  }
+
+  /* ── ASSESSMENT ───────────────────────────── */
+  .assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2px; margin: 20px 0; max-width: 760px;
+  }
+  .assessment-card {
+    background: var(--navy3); padding: 20px 18px;
+  }
+  .assessment-card h4 {
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .assessment-card .freq {
+    font-family: var(--font-mono); font-size: 8px;
+    letter-spacing: 0.1em; color: var(--accent2);
+    margin-bottom: 8px;
+  }
+  .assessment-card p {
+    font-size: 0.75rem; color: var(--warm);
+    font-weight: 300; line-height: 1.5;
+  }
+
+  /* ── OUTCOMES ─────────────────────────────── */
+  .outcomes-list {
+    list-style: none; max-width: 760px; margin: 20px 0;
+  }
+  .outcomes-list li {
+    display: flex; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+  .outcomes-list li:last-child { border-bottom: none; }
+  .outcome-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 900;
+    color: rgba(74,127,168,0.25);
+    line-height: 1; flex-shrink: 0; width: 28px;
+  }
+  .outcome-text strong {
+    display: block; font-size: 0.85rem;
+    font-weight: 600; color: var(--cream);
+    margin-bottom: 3px;
+  }
+  .outcome-text span {
+    font-size: 0.78rem; color: var(--warm);
+    font-weight: 300; line-height: 1.5;
+  }
+
+  /* ── MATERIALS ────────────────────────────── */
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2px; max-width: 760px; margin: 20px 0;
+  }
+  .material-item {
+    background: var(--navy3); padding: 14px 16px;
+    font-size: 0.78rem; color: var(--warm);
+    font-weight: 300; display: flex;
+    align-items: center; gap: 8px;
+  }
+  .material-item::before {
+    content: '·'; color: var(--accent); font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── NEXT / PREV ──────────────────────────── */
+  .grade-nav {
+    display: flex; gap: 2px;
+    padding: 32px 64px;
+    border-top: 1px solid var(--rule);
+    background: var(--navy2);
+  }
+  .grade-nav-card {
+    flex: 1; background: var(--navy3);
+    padding: 20px 24px; text-decoration: none;
+    transition: background 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .grade-nav-card:hover { background: var(--navy4); }
+  .grade-nav-card .direction {
+    font-family: var(--font-mono); font-size: 8px;
+    letter-spacing: 0.15em; color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .grade-nav-card .grade-link-title {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 700;
+    color: var(--cream);
+  }
+  .grade-nav-card .grade-link-sub {
+    font-size: 0.75rem; color: var(--warm);
+    font-weight: 300; margin-top: 3px;
+  }
+  .grade-nav-card.next { align-items: flex-end; text-align: right; }
+
+  /* ── MOBILE ───────────────────────────────── */
+  .mobile-toggle {
+    display: none; position: fixed;
+    bottom: 20px; right: 20px; z-index: 200;
+    background: var(--accent); color: white;
+    border: none; width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer; font-size: 1.1rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+  @media (max-width: 800px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+    .hero, .content-section, .schedule-banner, .grade-nav { padding-left: 24px; padding-right: 24px; }
+    .hero-grade-num { display: none; }
+    .tracks-grid { grid-template-columns: 1fr; }
+    .quarter-panel { padding: 20px 16px; }
+  }
+
+  /* ── SCROLL REVEAL ────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- ══ SIDEBAR ═════════════════════════════════════ -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="cognitive-sovereignty.html" class="back-link">All Grades</a>
+    <div class="sidebar-grade">7</div>
+    <div class="sidebar-title">Structure</div>
+    <div class="sidebar-phase">Phase Two · 6th–8th Grade</div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a href="#overview" class="nav-item active"><span class="nav-dot"></span> Grade Overview</a>
+    <a href="#daily-schedule" class="nav-item"><span class="nav-dot"></span> Daily Schedule</a>
+    <a href="#five-lenses" class="nav-item"><span class="nav-dot"></span> The Five Lenses</a>
+    <a href="#heatmap" class="nav-item"><span class="nav-dot"></span> Heatmap & Metacognition</a>
+    <a href="#tracks" class="nav-item"><span class="nav-dot"></span> Branching Tracks</a>
+  </div>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">
+    <div class="nav-label">36-Week Curriculum</div>
+    <a href="#quarters" class="nav-item"><span class="nav-dot q1"></span> Q1 · Truth Detection</a>
+    <a href="#quarters" class="nav-item"><span class="nav-dot q2"></span> Q2 · Data Deception</a>
+    <a href="#quarters" class="nav-item"><span class="nav-dot q3"></span> Q3 · Logical Design</a>
+    <a href="#quarters" class="nav-item"><span class="nav-dot q4"></span> Q4 · Argument Mastery</a>
+  </div>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">
+    <div class="nav-label">Assessment & Outcomes</div>
+    <a href="#assessment" class="nav-item"><span class="nav-dot"></span> Mastery Assessment</a>
+    <a href="#outcomes" class="nav-item"><span class="nav-dot"></span> End-of-Year Outcomes</a>
+    <a href="#materials" class="nav-item"><span class="nav-dot"></span> Materials</a>
+  </div>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">
+    <div class="nav-label">Grade Navigation</div>
+    <a href="grade-6.html" class="nav-item"><span class="nav-dot"></span> ← Grade 6 · Foundations</a>
+    <a href="grade-8.html" class="nav-item"><span class="nav-dot"></span> Grade 8 · Synthesis →</a>
+  </div>
+
+  <div class="sidebar-footer">
+    Phase Two · 6th–8th Grade<br>
+    Discovering what kinds of<br>thinking feel alive
+  </div>
+</nav>
+
+<!-- ══ MAIN ════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-breadcrumb">Cognitive Sovereignty · Phase Two · <span>Grade 7</span></div>
+    <div class="hero-grade-num">7</div>
+    <h1>Grade 7<br><em>Structure</em></h1>
+    <p class="hero-sub">Students move from recognition to mapping and evaluation. The Toulmin Model, Boolean logic, and source credibility become active tools — and for the first time, students turn the lens inward through the Metacognitive Layer.</p>
+    <div class="hero-tags">
+      <span class="tag highlight">Toulmin Model</span>
+      <span class="tag highlight">Boolean Logic</span>
+      <span class="tag highlight">Metacognitive Layer</span>
+      <span class="tag">Red Team Intro</span>
+      <span class="tag">Source Credibility</span>
+      <span class="tag">Statistical Fallacies</span>
+      <span class="tag">Argument Flowcharts</span>
+      <span class="tag">Inoculation Exercises</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>36</strong><span>Weeks</span></div>
+      <div class="hero-stat"><strong>3.5 hrs</strong><span>Daily Instruction</span></div>
+      <div class="hero-stat"><strong>4</strong><span>Quarters</span></div>
+      <div class="hero-stat"><strong>0</strong><span>Homework</span></div>
+      <div class="hero-stat"><strong>6</strong><span>Fallacies Mastered</span></div>
+    </div>
+  </section>
+
+  <!-- DAILY SCHEDULE -->
+  <div class="schedule-banner" id="daily-schedule">
+    <div class="schedule-label">Daily Schedule · 8:00 AM – 1:00 PM</div>
+    <div class="schedule-track">
+      <div class="schedule-block session">
+        <div class="schedule-time">8:00 – 8:35</div>
+        <div class="schedule-name">Session 1</div>
+        <div class="schedule-sub">Reading Comprehension</div>
+      </div>
+      <div class="schedule-block break-block">
+        <div class="schedule-time">8:35 – 8:50</div>
+        <div class="schedule-name">Brain Break</div>
+        <div class="schedule-sub">Movement</div>
+      </div>
+      <div class="schedule-block session">
+        <div class="schedule-time">8:50 – 9:25</div>
+        <div class="schedule-name">Session 2</div>
+        <div class="schedule-sub">Grammar & Syntax</div>
+      </div>
+      <div class="schedule-block break-block">
+        <div class="schedule-time">9:25 – 9:40</div>
+        <div class="schedule-name">Snack & Play</div>
+        <div class="schedule-sub">Social</div>
+      </div>
+      <div class="schedule-block session">
+        <div class="schedule-time">9:40 – 10:15</div>
+        <div class="schedule-name">Session 3</div>
+        <div class="schedule-sub">Pattern Recognition</div>
+      </div>
+      <div class="schedule-block break-block">
+        <div class="schedule-time">10:15 – 10:30</div>
+        <div class="schedule-name">Brain Break</div>
+        <div class="schedule-sub">Outdoor Reset</div>
+      </div>
+      <div class="schedule-block session">
+        <div class="schedule-time">10:30 – 11:05</div>
+        <div class="schedule-name">Practice 1</div>
+        <div class="schedule-sub">Visualization</div>
+      </div>
+      <div class="schedule-block break-block">
+        <div class="schedule-time">11:05 – 11:20</div>
+        <div class="schedule-name">Brain Break</div>
+        <div class="schedule-sub">Stretch</div>
+      </div>
+      <div class="schedule-block session">
+        <div class="schedule-time">11:20 – 11:55</div>
+        <div class="schedule-name">Practice 2</div>
+        <div class="schedule-sub">Writing</div>
+      </div>
+      <div class="schedule-block lunch-block">
+        <div class="schedule-time">11:55 – 12:25</div>
+        <div class="schedule-name">Lunch</div>
+        <div class="schedule-sub">Group Discussion</div>
+      </div>
+      <div class="schedule-block session">
+        <div class="schedule-time">12:25 – 1:00</div>
+        <div class="schedule-name">Practice 3</div>
+        <div class="schedule-sub">Project Work</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIVE LENSES -->
+  <section class="content-section reveal" id="five-lenses">
+    <div class="section-eyebrow">Structural Model</div>
+    <h2 class="section-title">The Five Lenses</h2>
+    <p class="section-sub">Each week is anchored by a Core Problem, not a logical theme — explored through five disciplines simultaneously.</p>
+    <div class="section-body">
+      <p>Rather than treating subjects as separate containers, 7th grade organizes every week around a single real-world problem. Boolean logic, argument mapping, data analysis, and visualization are not taught in isolation — they are all applied to the same problem from different angles within the same day.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card reading">
+        <div class="pillar-icon">📖</div>
+        <div class="pillar-name">Reading Comprehension</div>
+        <div class="pillar-time">Sessions 1 & 3 · 35 min each</div>
+        <div class="pillar-desc">Analyzing source credibility, bias in headlines, statistical fallacies, and argument structure in real-world texts.</div>
+      </div>
+      <div class="pillar-card grammar">
+        <div class="pillar-icon">✍️</div>
+        <div class="pillar-name">Grammar & Syntax</div>
+        <div class="pillar-time">Sessions 2 & Practice 2 · 35 min each</div>
+        <div class="pillar-desc">Essay structure, counterargument, logical connectors, persuasive writing. Precision in claim construction.</div>
+      </div>
+      <div class="pillar-card pattern">
+        <div class="pillar-icon">🔢</div>
+        <div class="pillar-name">Pattern Recognition</div>
+        <div class="pillar-time">Session 3 · 35 min</div>
+        <div class="pillar-desc">Boolean logic, data algorithms, pseudocode, conditional logic — building toward the Toulmin Model's formal structure.</div>
+      </div>
+      <div class="pillar-card visual">
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-name">Visualization</div>
+        <div class="pillar-time">Practice 1 · 35 min</div>
+        <div class="pillar-desc">Decision trees, heatmaps, infographics, Toulmin flowcharts, argument maps. Seeing the skeleton of any claim.</div>
+      </div>
+      <div class="pillar-card writing">
+        <div class="pillar-icon">📝</div>
+        <div class="pillar-name">Writing Practice</div>
+        <div class="pillar-time">Practice 2 · 35 min</div>
+        <div class="pillar-desc">Applying grammar tools to the week's Core Problem. Essays, refutations, technical writing, and persuasive argument.</div>
+      </div>
+      <div class="pillar-card project">
+        <div class="pillar-icon">🛠</div>
+        <div class="pillar-name">Interdisciplinary Project</div>
+        <div class="pillar-time">Practice 3 · 35 min</div>
+        <div class="pillar-desc">The quarter's logic applied to a tangible outcome: an app, a debunk, a board game, or a live debate.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEATMAP + METACOGNITION -->
+  <section class="content-section reveal" id="heatmap">
+    <div class="section-eyebrow">The Vertical Thread</div>
+    <h2 class="section-title">The Metacognitive Layer</h2>
+    <p class="section-sub">Grade 7 is where the Internal Heatmap becomes an active analysis tool, not just a feeling label.</p>
+    <div class="section-body">
+      <p>In 6th grade, students learned to notice their physiological responses to charged information. In 7th grade, that observation becomes a formal step in every analytical process — the first gate through which any claim must pass before logical tools are applied.</p>
+
+      <div class="heatmap-thread">
+        <h4>The Internal Heatmap Protocol</h4>
+        <p><strong>Step 1 — Notice:</strong> Before engaging with a claim, students pause and name their physiological response. Does this headline produce immediate agreement, anger, or fear?</p>
+        <p><strong>Step 2 — Name:</strong> The emotional state is recorded in the Thinking Journal — not to suppress it, but to treat it as data. A strong reaction is a signal that a manipulation lever may have been pulled.</p>
+        <p><strong>Step 3 — Gate:</strong> The Logic Gate stays closed until the emotional pulse subsides. Only then are the Toulmin Model and Boolean tools applied.</p>
+        <p><strong>Step 4 — Map:</strong> In the Metacognitive Reflection session, students map both the argument's structure <em>and</em> their own response to it — noting which emotional lever was pulled and why it works.</p>
+      </div>
+
+      <p>This is also the year when <strong>Red Team Inoculation Exercises</strong> are introduced for the first time — under mandatory Certified Facilitator supervision. Students construct (but never publish) a piece of persuasive misinformation, then immediately use their logic tools to dismantle it.</p>
+
+      <div class="callout warning">
+        <p><strong>Facilitation note:</strong> Red Team exercises in 7th grade are introductory. The Socratic Debrief Protocol is mandatory and non-negotiable. A poorly facilitated debrief does not produce a neutral outcome — it produces cynicism. These sessions require a Certified Facilitator.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANCHING TRACKS -->
+  <section class="content-section reveal" id="tracks">
+    <div class="section-eyebrow">Branching Competency</div>
+    <h2 class="section-title">Three Tracks, One Standard</h2>
+    <p class="section-sub">Movement between tracks requires nothing more than a conversation. No tests. No stigma.</p>
+    <div class="section-body">
+      <p>All three tracks use the same Five Lenses, the same Core Problems, and the same assessment standards. The difference is the <strong>context in which the tools are applied</strong> — not the rigor with which they are learned.</p>
+      <div class="tracks-grid">
+        <div class="track-block core">
+          <h4>Core Competency</h4>
+          <div class="track-label">Required · All Students</div>
+          <ul>
+            <li>Toulmin Model: Claim → Grounds → Warrant → Rebuttal</li>
+            <li>Boolean logic: AND / OR / NOT in natural language</li>
+            <li>Recognizing Appeal to Authority, Cherry-Picking, Slippery Slope, False Dichotomy</li>
+            <li>Source credibility evaluation with the CRAAP Test</li>
+            <li>Introductory Red Team exercise with full debrief</li>
+          </ul>
+        </div>
+        <div class="track-block ext">
+          <h4>Extension Competency</h4>
+          <div class="track-label">For Students Who Have Mastered Core</div>
+          <ul>
+            <li>Full formal Toulmin Flowcharts with rebuttal branches</li>
+            <li>P-value and confidence interval interpretation</li>
+            <li>Boolean circuit diagrams and logic gate maps</li>
+            <li>Steel-manning opposing arguments in written form</li>
+            <li>Preparation for Grade 8 predicate logic</li>
+          </ul>
+        </div>
+        <div class="track-block voc">
+          <h4>Vocational Depth</h4>
+          <div class="track-label">High-Intensity Application Track</div>
+          <ul>
+            <li>Boolean If/Then rules applied to trade or agricultural decision-making</li>
+            <li>Reading a real contract using Toulmin argument mapping</li>
+            <li>Spotting manipulated graphs in product or supplier claims</li>
+            <li>Evaluating material safety data sheets as statistical arguments</li>
+            <li>Designing a simple decision tree for a real-world task</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout blue">
+        <p><strong>The Lateral Move:</strong> If a student stalls on Boolean circuit diagrams or formal Toulmin structure, the Orchestrator shifts them into a High-Intensity Application week. They apply the tools they already have to a real legal brief or product specification — without repeating abstract exercises.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 36-WEEK CURRICULUM -->
+  <section class="content-section reveal" id="quarters">
+    <div class="section-eyebrow">36-Week Curriculum</div>
+    <h2 class="section-title">Quarter by Quarter</h2>
+    <p class="section-sub">Each quarter is anchored by a Core Problem, a project theme, and a Fallacy of the Quarter.</p>
+
+    <div class="quarter-nav">
+      <button class="q-tab q1 active" onclick="showQuarter('q1', this)">Q1 · Truth Detection</button>
+      <button class="q-tab q2" onclick="showQuarter('q2', this)">Q2 · Data Deception</button>
+      <button class="q-tab q3" onclick="showQuarter('q3', this)">Q3 · Logical Design</button>
+      <button class="q-tab q4" onclick="showQuarter('q4', this)">Q4 · Argument Mastery</button>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quarter-panel active" id="panel-q1">
+      <div class="quarter-header">
+        <div>
+          <div class="quarter-theme">Build a "Truth Detector" App</div>
+          <div class="quarter-fallacy">Fallacy of the Quarter: <span>Appeal to Authority</span></div>
+        </div>
+        <div class="quarter-weeks-badge">Weeks 1 – 9</div>
+      </div>
+      <div class="callout blue" style="margin-bottom:20px;">
+        <p><strong>Core Problem:</strong> How do we know if a source is trustworthy? Students build a decision-logic app that automates their credibility evaluation process — applying Boolean AND/OR/NOT gates to real source evaluation criteria.</p>
+      </div>
+      <div class="week-table-wrap">
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th class="reading">Reading / Comprehension</th>
+              <th class="grammar">Grammar & Writing</th>
+              <th class="pattern">Pattern / Logic</th>
+              <th class="visual">Visualization</th>
+              <th class="project">Project</th>
+              <th class="writing">Metacognitive Thread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wk 1</td>
+              <td><strong>CRAAP Test</strong>Read: "Expert Says…" — what makes authority real?</td>
+              <td><strong>5-Para Essay</strong>Thesis + 3 supports structure</td>
+              <td><strong>AND, OR, NOT</strong>Truth tables introduced</td>
+              <td><strong>Decision Tree</strong>Is this source credible?</td>
+              <td>Choose app topic. What misinformation will it detect?</td>
+              <td class="meta-cell">Journal: What made you trust the last thing you read?</td>
+            </tr>
+            <tr>
+              <td>Wk 2</td>
+              <td><strong>Appeal to Authority</strong>"Doctor Says Vaccines Cause Autism" — does credential equal evidence?</td>
+              <td><strong>Topic Sentences</strong>Claim-first paragraph structure</td>
+              <td><strong>Boolean Search</strong>"cats AND dogs" — precision in queries</td>
+              <td><strong>Venn Diagram</strong>Expert credential vs. evidence quality</td>
+              <td>List 3 sources. Apply CRAAP to each.</td>
+              <td class="meta-cell">Journal: Did any source trigger immediate trust? Why?</td>
+            </tr>
+            <tr>
+              <td>Wk 3</td>
+              <td><strong>Primary vs. Secondary</strong>Tracing claims back to their origin</td>
+              <td><strong>Evidence Integration</strong>Embedding quotes without losing your voice</td>
+              <td><strong>If-Then Logic</strong>Conditional rules in natural language</td>
+              <td><strong>Flowchart</strong>Source → Claim → Supporting evidence chain</td>
+              <td>Evaluate 1 source using built criteria</td>
+              <td class="meta-cell">Journal: Where did the original claim come from?</td>
+            </tr>
+            <tr>
+              <td>Wk 4</td>
+              <td><strong>Bias in Headlines</strong>How framing shapes interpretation before reading begins</td>
+              <td><strong>Loaded Language</strong>Identifying and replacing emotionally charged words</td>
+              <td><strong>Negation (NOT)</strong>Excluding categories in logic gates</td>
+              <td><strong>Bias Heatmap</strong>Mapping where in an article the framing is strongest</td>
+              <td>Build a credibility rubric (5 criteria)</td>
+              <td class="meta-cell">Heatmap check: Which headline made your pulse jump?</td>
+            </tr>
+            <tr>
+              <td>Wk 5</td>
+              <td><strong>Fact vs. Opinion</strong>Distinguishing descriptive claims from evaluative ones</td>
+              <td><strong>Logical Transitions</strong>Therefore, however, nevertheless — precision connectors</td>
+              <td><strong>Truth Table Practice</strong>All AND/OR/NOT combinations</td>
+              <td><strong>Truth Table Visual</strong>Color-coded logic gate outputs</td>
+              <td>Test the rubric on 1 real article</td>
+              <td class="meta-cell">Journal: Which fact felt like an opinion to you?</td>
+            </tr>
+            <tr>
+              <td>Wk 6</td>
+              <td><strong>Correlation ≠ Causation</strong>Ice cream and drowning — the classic trap</td>
+              <td><strong>Citation Format</strong>Making claims attributable and traceable</td>
+              <td><strong>AND/OR Combinations</strong>Multi-variable Boolean conditions</td>
+              <td><strong>Logic Gate Diagram</strong>Visual Boolean circuit</td>
+              <td>Draft app flowchart — map the logic of your detector</td>
+              <td class="meta-cell">Journal: Find one correlation presented as causation in a news headline</td>
+            </tr>
+            <tr>
+              <td>Wk 7</td>
+              <td><strong>Review: Source Types</strong>Synthesizing CRAAP, primary/secondary, bias</td>
+              <td><strong>Peer Edit</strong>Giving and receiving precise feedback</td>
+              <td><strong>Boolean Algorithm</strong>Writing logic as a repeatable process</td>
+              <td><strong>Full Decision Tree</strong>All credibility branches mapped</td>
+              <td>Code logic in Scratch — first build</td>
+              <td class="meta-cell">Journal: What did peer feedback reveal about your blind spots?</td>
+            </tr>
+            <tr>
+              <td>Wk 8</td>
+              <td><strong>App Logic Demo</strong>Testing the detector on real fake news articles</td>
+              <td><strong>Final Draft</strong>Essay incorporating all evidence and counterargument</td>
+              <td><strong>Debug Logic</strong>Finding and fixing broken Boolean gates</td>
+              <td><strong>App Interface Sketch</strong>Visual layout of the finished tool</td>
+              <td>Test app on 3 real misinformation examples</td>
+              <td class="meta-cell">Heatmap: Did the fake news trigger your detector before the app did?</td>
+            </tr>
+            <tr class="capstone-row">
+              <td>Wk 9 ★</td>
+              <td><strong>Q1 Capstone</strong>Present and defend source evaluation methodology</td>
+              <td><strong>Present Essay</strong>Deliver to group with Q&A</td>
+              <td><strong>Defend Logic</strong>Explain every gate in the Boolean circuit</td>
+              <td><strong>Visual App Demo</strong>Live demonstration of the Truth Detector</td>
+              <td><strong>Group App Pitch</strong>Present to panel. No fallacies!</td>
+              <td class="meta-cell">Portfolio: What did you believe in Week 1 that you don't now?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quarter-panel" id="panel-q2">
+      <div class="quarter-header">
+        <div>
+          <div class="quarter-theme">Investigate a Conspiracy Theory</div>
+          <div class="quarter-fallacy">Fallacy of the Quarter: <span>Cherry-Picking</span></div>
+        </div>
+        <div class="quarter-weeks-badge">Weeks 10 – 18</div>
+      </div>
+      <div class="callout blue" style="margin-bottom:20px;">
+        <p><strong>Core Problem:</strong> How is data selected and presented to deceive? Students choose a real conspiracy theory, collect and analyze the data surrounding it, and build a formal debunking using statistical and visual tools.</p>
+      </div>
+      <div class="week-table-wrap">
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th class="reading">Reading / Comprehension</th>
+              <th class="grammar">Grammar & Writing</th>
+              <th class="pattern">Pattern / Logic</th>
+              <th class="visual">Visualization</th>
+              <th class="project">Project</th>
+              <th class="writing">Metacognitive Thread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wk 10</td>
+              <td><strong>Cherry-Picking Data</strong>Read: "Moon Landing Hoax" — what data was selected, and what was left out?</td>
+              <td><strong>Counterargument ¶</strong>Acknowledging the opposing view without conceding ground</td>
+              <td><strong>Outliers in Data</strong>Why one data point doesn't tell the story</td>
+              <td><strong>Scatter Plot</strong>Visualizing the full dataset vs. selected points</td>
+              <td>Choose conspiracy theory. Why does it feel believable?</td>
+              <td class="meta-cell">Heatmap: What made the conspiracy initially seem plausible?</td>
+            </tr>
+            <tr>
+              <td>Wk 11</td>
+              <td><strong>Sample Size Fallacy</strong>"9 out of 10 dentists" — how many dentists?</td>
+              <td><strong>Refutation Structure</strong>Acknowledge → Undermine → Replace</td>
+              <td><strong>Mean vs. Median</strong>Why averages can hide the truth</td>
+              <td><strong>Box Plot</strong>Visualizing distribution, not just center</td>
+              <td>Collect data for and against your theory</td>
+              <td class="meta-cell">Journal: Did the data surprise you? What did you expect to find?</td>
+            </tr>
+            <tr>
+              <td>Wk 12</td>
+              <td><strong>Graph Manipulation</strong>Truncated axes, misleading scales, 3D distortion</td>
+              <td><strong>Concession Phrases</strong>Granting a point without losing the argument</td>
+              <td><strong>Data Sorting Algorithm</strong>Ordering data to reveal or conceal patterns</td>
+              <td><strong>Honest vs. Manipulated Graph</strong>Side-by-side comparison of same data</td>
+              <td>Graph your findings — honest version first</td>
+              <td class="meta-cell">Heatmap: Which graph version triggered more alarm?</td>
+            </tr>
+            <tr>
+              <td>Wk 13</td>
+              <td><strong>False Equivalence</strong>Treating unequal things as equal weight</td>
+              <td><strong>Avoiding False Balance</strong>Not all "sides" have equal evidence</td>
+              <td><strong>Correlation Coefficient</strong>Measuring how related two variables actually are</td>
+              <td><strong>Correlation Heatmap</strong>Visual matrix of variable relationships</td>
+              <td>Debunk 1 specific data point in your theory</td>
+              <td class="meta-cell">Journal: What would it take to change your conclusion?</td>
+            </tr>
+            <tr>
+              <td>Wk 14</td>
+              <td><strong>Anecdotal Evidence</strong>One story ≠ a pattern</td>
+              <td><strong>Evidence Hierarchy</strong>Ranking evidence by reliability</td>
+              <td><strong>Random Sampling</strong>Why a representative sample matters</td>
+              <td><strong>Sampling Visual</strong>Showing how sample selection distorts results</td>
+              <td>Survey class on the conspiracy. Analyze results.</td>
+              <td class="meta-cell">Journal: Did the survey change anything you believed?</td>
+            </tr>
+            <tr>
+              <td>Wk 15</td>
+              <td><strong>Statistical Significance</strong>The difference between a real finding and noise</td>
+              <td><strong>Qualifying Claims</strong>Using "suggests," "indicates," "may" accurately</td>
+              <td><strong>P-Value Introduction</strong>What does "statistically significant" actually mean?</td>
+              <td><strong>Confidence Interval</strong>Visualizing uncertainty in a finding</td>
+              <td>Analyze the survey with mean, median, sample critique</td>
+              <td class="meta-cell">Heatmap: Did statistical uncertainty make you more or less certain?</td>
+            </tr>
+            <tr>
+              <td>Wk 16</td>
+              <td><strong>Bias in Reporting</strong>How news outlets select, frame, and omit</td>
+              <td><strong>Final Edit</strong>Precision and concision in the final report</td>
+              <td><strong>Full Algorithm</strong>The complete data collection-to-conclusion process</td>
+              <td><strong>Complete Infographic</strong>All findings in one visual</td>
+              <td>Build the debunking poster</td>
+              <td class="meta-cell">Journal: How has your understanding of the conspiracy changed since Week 10?</td>
+            </tr>
+            <tr>
+              <td>Wk 17</td>
+              <td><strong>Review</strong>Red Team exercise: construct the strongest possible version of the conspiracy's argument</td>
+              <td><strong>Polish</strong>Final language refinements</td>
+              <td><strong>Debug Data</strong>Check for errors in your own analysis</td>
+              <td><strong>Visual Summary</strong>Distill findings to 3 key visuals</td>
+              <td>Practice presentation. Anticipate challenges.</td>
+              <td class="meta-cell">Heatmap: Writing the Red Team argument — what did it feel like?</td>
+            </tr>
+            <tr class="capstone-row">
+              <td>Wk 18 ★</td>
+              <td><strong>Q2 Capstone</strong>Deliver the debunk. Defend methodology.</td>
+              <td><strong>Full Report</strong>Written debunking with citations</td>
+              <td><strong>Defend Stats</strong>Answer statistical challenges from panel</td>
+              <td><strong>Poster + Data</strong>Visual evidence displayed publicly</td>
+              <td><strong>Group Debunk Event</strong>Live presentation to external audience</td>
+              <td class="meta-cell">Portfolio: What did you believe in Week 10 that you don't now?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quarter-panel" id="panel-q3">
+      <div class="quarter-header">
+        <div>
+          <div class="quarter-theme">Design a Logical Board Game</div>
+          <div class="quarter-fallacy">Fallacy of the Quarter: <span>Slippery Slope</span></div>
+        </div>
+        <div class="quarter-weeks-badge">Weeks 19 – 27</div>
+      </div>
+      <div class="callout blue" style="margin-bottom:20px;">
+        <p><strong>Core Problem:</strong> What makes a rule system fair, exploitable, or logically broken? Students design a playable board game governed entirely by Boolean If/Then rules — then playtest, identify exploits, and patch them using precise conditional logic.</p>
+      </div>
+      <div class="week-table-wrap">
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th class="reading">Reading / Comprehension</th>
+              <th class="grammar">Grammar & Writing</th>
+              <th class="pattern">Pattern / Logic</th>
+              <th class="visual">Visualization</th>
+              <th class="project">Project</th>
+              <th class="writing">Metacognitive Thread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wk 19</td>
+              <td><strong>Slippery Slope</strong>Read: "If we allow X…" — how cascading assumptions work</td>
+              <td><strong>Conditional Sentences</strong>"If…then…unless…" grammatical structure</td>
+              <td><strong>If-Then-Else</strong>Three-branch conditional in pseudocode</td>
+              <td><strong>Decision Branch</strong>Visualizing a conditional with all outcomes</td>
+              <td>Brainstorm game. What is the core decision loop?</td>
+              <td class="meta-cell">Journal: Where did you use "if/then" reasoning today outside school?</td>
+            </tr>
+            <tr>
+              <td>Wk 20</td>
+              <td><strong>Game Logic Analysis</strong>Reading the rulebook of a real game as an argument</td>
+              <td><strong>Imperative Voice</strong>Writing instructions without ambiguity</td>
+              <td><strong>Loops in Rules</strong>Repeating conditions and turn structures</td>
+              <td><strong>Loop Flowchart</strong>Visual representation of a turn cycle</td>
+              <td>Sketch board layout. What is the resource being contested?</td>
+              <td class="meta-cell">Journal: Which rule in your favorite game is most exploitable?</td>
+            </tr>
+            <tr>
+              <td>Wk 21</td>
+              <td><strong>Win Condition Logic</strong>What does "winning" actually require? Defining it precisely.</td>
+              <td><strong>Avoiding Ambiguity</strong>Precision editing — removing every "maybe" and "usually"</td>
+              <td><strong>Nested Conditionals</strong>If (A and B) then C, unless D</td>
+              <td><strong>Nested Decision Tree</strong>Multi-level outcome mapping</td>
+              <td>Define win logic in formal If/Then language</td>
+              <td class="meta-cell">Journal: Does your win condition feel fair? To who?</td>
+            </tr>
+            <tr>
+              <td>Wk 22</td>
+              <td><strong>Player Bias in Rules</strong>How rule design advantages some players over others</td>
+              <td><strong>Fairness Language</strong>Writing rules that account for asymmetric starting conditions</td>
+              <td><strong>Randomness Control</strong>When to use probability and when not to</td>
+              <td><strong>Probability Pie</strong>Visualizing chance in the game system</td>
+              <td>Balance starting resources. Who was advantaged before?</td>
+              <td class="meta-cell">Heatmap: Did fixing fairness feel like loss or gain?</td>
+            </tr>
+            <tr>
+              <td>Wk 23</td>
+              <td><strong>Rule Exploitation</strong>When players use rules to do what the designer didn't intend</td>
+              <td><strong>Patch Notes</strong>Writing precise amendments to existing rules</td>
+              <td><strong>Exploit Algorithm</strong>Mapping the logical path of an exploit</td>
+              <td><strong>Exploit Map</strong>Visualizing the broken logic chain</td>
+              <td>Playtest v1. Find and document every exploit.</td>
+              <td class="meta-cell">Journal: Did you enjoy finding the exploits? What does that say?</td>
+            </tr>
+            <tr>
+              <td>Wk 24</td>
+              <td><strong>Feedback Loops</strong>Runaway leaders, catch-up mechanics, death spirals</td>
+              <td><strong>Cause-Effect ¶</strong>Writing about systemic outcomes</td>
+              <td><strong>Feedback in Code</strong>Loops that modify their own conditions</td>
+              <td><strong>Feedback Diagram</strong>Positive vs. negative loop visualization</td>
+              <td>Fix exploits. Add one balancing feedback loop.</td>
+              <td class="meta-cell">Journal: Where do feedback loops exist in real social systems?</td>
+            </tr>
+            <tr>
+              <td>Wk 25</td>
+              <td><strong>Final Rule Set</strong>Analyzing complete rule systems for logical consistency</td>
+              <td><strong>Technical Writing</strong>The rulebook as a genre — precision, completeness, clarity</td>
+              <td><strong>Full Game Algorithm</strong>The complete decision tree of one full game</td>
+              <td><strong>Complete Flowchart</strong>Every rule visually mapped</td>
+              <td>Write the formal rulebook. Design cards and tokens.</td>
+              <td class="meta-cell">Journal: What surprised you about translating your game into formal logic?</td>
+            </tr>
+            <tr>
+              <td>Wk 26</td>
+              <td><strong>Review</strong>Comparing your rulebook to a commercial game's</td>
+              <td><strong>Final Edit</strong>Peer review of rulebook clarity</td>
+              <td><strong>Debug Game</strong>Final logic audit of all rules</td>
+              <td><strong>Visual Rulebook</strong>Illustrated quick-start guide</td>
+              <td>Playtest v2 with external players. Collect feedback.</td>
+              <td class="meta-cell">Journal: Did outside players find exploits you missed?</td>
+            </tr>
+            <tr class="capstone-row">
+              <td>Wk 27 ★</td>
+              <td><strong>Q3 Capstone</strong>Present design decisions and logical justifications</td>
+              <td><strong>Present Rulebook</strong>Explain every conditional in plain language</td>
+              <td><strong>Defend Logic</strong>Why is every rule necessary?</td>
+              <td><strong>Game Demo</strong>Live tournament play</td>
+              <td><strong>Tournament + Feedback</strong>Play all games. Judge logic quality.</td>
+              <td class="meta-cell">Portfolio: What does designing rules teach you about how rules work in real life?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quarter-panel" id="panel-q4">
+      <div class="quarter-header">
+        <div>
+          <div class="quarter-theme">Capstone: Live Debate + Visual Logic Map</div>
+          <div class="quarter-fallacy">Fallacy of the Quarter: <span>False Dichotomy</span></div>
+        </div>
+        <div class="quarter-weeks-badge">Weeks 28 – 36</div>
+      </div>
+      <div class="callout blue" style="margin-bottom:20px;">
+        <p><strong>Core Problem:</strong> How do you defend a position with logic, not emotion — and how do you dismantle one? Students choose a real contested topic, map both sides using the full Toulmin Model, and deliver a formal live debate in Week 36.</p>
+      </div>
+      <div class="week-table-wrap">
+        <table class="week-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th class="reading">Reading / Comprehension</th>
+              <th class="grammar">Grammar & Writing</th>
+              <th class="pattern">Pattern / Logic</th>
+              <th class="visual">Visualization</th>
+              <th class="project">Project</th>
+              <th class="writing">Metacognitive Thread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wk 28</td>
+              <td><strong>False Dichotomy</strong>"You're with us or against us" — mapping the excluded middle</td>
+              <td><strong>Nuanced Claims</strong>Thesis statements that acknowledge complexity</td>
+              <td><strong>Spectrum Logic</strong>Positions as points on a continuum, not binary switches</td>
+              <td><strong>Spectrum Line</strong>Mapping a debate topic's full position range</td>
+              <td>Choose debate topic. Map your initial position on the spectrum.</td>
+              <td class="meta-cell">Heatmap: Where does your body place you on the spectrum before thinking?</td>
+            </tr>
+            <tr>
+              <td>Wk 29</td>
+              <td><strong>Steel-Manning</strong>Building the strongest possible version of the opposing view</td>
+              <td><strong>Concession + Rebuttal</strong>Granting a point, then redirecting</td>
+              <td><strong>Opposing If-Then</strong>Mapping the logic of the other side</td>
+              <td><strong>Steel Man Diagram</strong>Visual map of the opponent's best argument</td>
+              <td>Research both sides equally. No cherry-picking.</td>
+              <td class="meta-cell">Journal: Did steel-manning change your position at all?</td>
+            </tr>
+            <tr>
+              <td>Wk 30</td>
+              <td><strong>Warrant in Arguments</strong>The unstated assumption that makes a claim work</td>
+              <td><strong>Reasoning Paragraph</strong>Making the warrant explicit in writing</td>
+              <td><strong>Toulmin Model — Full</strong>Claim + Grounds + Warrant + Backing + Qualifier + Rebuttal</td>
+              <td><strong>Full Toulmin Flowchart</strong>Complete 6-part argument mapped visually</td>
+              <td>Build full argument map for your position</td>
+              <td class="meta-cell">Journal: What was the hidden assumption in your own argument?</td>
+            </tr>
+            <tr>
+              <td>Wk 31</td>
+              <td><strong>Qualifiers & Rebuttals</strong>When to say "usually," "in most cases," "unless"</td>
+              <td><strong>However, Although</strong>Concessive clauses in formal writing</td>
+              <td><strong>Exception Handling</strong>What breaks your logical rule?</td>
+              <td><strong>Exception Branch</strong>Adding failure conditions to the Toulmin map</td>
+              <td>Draft opening speech. Include qualifier and rebuttal.</td>
+              <td class="meta-cell">Heatmap: Does acknowledging exceptions make your argument feel weaker?</td>
+            </tr>
+            <tr>
+              <td>Wk 32</td>
+              <td><strong>Audience Analysis</strong>Who are you persuading and what do they already believe?</td>
+              <td><strong>Rhetorical Appeals</strong>Logos, ethos, pathos — and when each is legitimate</td>
+              <td><strong>Persuasion Algorithm</strong>Matching argument structure to audience beliefs</td>
+              <td><strong>Audience Heatmap</strong>Mapping where your audience's emotional triggers are</td>
+              <td>Tailor speech to the specific panel audience</td>
+              <td class="meta-cell">Journal: Is it manipulation to tailor your argument to your audience?</td>
+            </tr>
+            <tr>
+              <td>Wk 33</td>
+              <td><strong>Cross-Examination</strong>Reading opposing arguments for logical weak points</td>
+              <td><strong>Question Structure</strong>Asking questions that reveal, not attack</td>
+              <td><strong>Logic Traps</strong>Questions designed to surface hidden assumptions</td>
+              <td><strong>Trap Decision Tree</strong>Mapping the paths a cross-examination question can take</td>
+              <td>Mock debate. Write 3 cross-examination questions.</td>
+              <td class="meta-cell">Heatmap: How did cross-examination feel? Aggressive or clarifying?</td>
+            </tr>
+            <tr>
+              <td>Wk 34</td>
+              <td><strong>Final Prep</strong>Reviewing the complete argument for logical consistency</td>
+              <td><strong>Polish Speech</strong>Rhetoric and delivery refinements</td>
+              <td><strong>Full Logic Chain</strong>Every claim traces to evidence, every warrant is explicit</td>
+              <td><strong>Complete Argument Map</strong>Hand-drawn Toulmin map on large paper</td>
+              <td>Refine logic map. Practice with timer.</td>
+              <td class="meta-cell">Journal: Where is your argument still weakest?</td>
+            </tr>
+            <tr>
+              <td>Wk 35</td>
+              <td><strong>Stress Test</strong>Anticipate every challenge the panel might raise</td>
+              <td><strong>Final Edit</strong>One last pass for precision and clarity</td>
+              <td><strong>Stress Test Logic</strong>Find and fix the last weak links in the chain</td>
+              <td><strong>Visual Proof</strong>Can someone understand your argument from the map alone?</td>
+              <td>Dress rehearsal. Full run-through with Q&A.</td>
+              <td class="meta-cell">Heatmap: Is your argument now logic-driven or still partly emotional?</td>
+            </tr>
+            <tr class="capstone-row">
+              <td>Wk 36 ★</td>
+              <td><strong>LIVE DEBATE</strong>Deliver. Defend. Answer challenges without fallacies.</td>
+              <td><strong>Full Speech</strong>Formal delivery to panel and audience</td>
+              <td><strong>Defend Logic Chain</strong>Every warrant explained on demand</td>
+              <td><strong>Present Argument Map</strong>Hand-drawn logic map displayed and explained</td>
+              <td><strong>CAPSTONE: Debate + Logic Map</strong>No fallacies. Logic only.</td>
+              <td class="meta-cell">Portfolio: What did you believe in Week 28 that changed?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT -->
+  <section class="content-section reveal" id="assessment">
+    <div class="section-eyebrow">Mastery-Based Assessment</div>
+    <h2 class="section-title">How Mastery Is Measured</h2>
+    <p class="section-sub">No standardized tests. No multiple choice. Evidence of thinking only.</p>
+    <div class="section-body">
+      <p>Assessment in 7th grade measures the quality of reasoning, not the speed of recall. Every tool is designed to capture <strong>how</strong> a student thinks, not just whether they arrived at a correct answer.</p>
+      <div class="assessment-grid">
+        <div class="assessment-card">
+          <h4>Project Rubric</h4>
+          <div class="freq">Weekly · 5-point scale</div>
+          <p>Evaluates logical rigor, visual clarity, and claim construction in the week's project output.</p>
+        </div>
+        <div class="assessment-card">
+          <h4>Logic Chain Accuracy</h4>
+          <div class="freq">Quarterly review</div>
+          <p>Every claim traces to evidence. Every warrant is explicit. Gaps in the chain are the primary feedback signal.</p>
+        </div>
+        <div class="assessment-card">
+          <h4>Fallacy Log</h4>
+          <div class="freq">1 per quarter</div>
+          <p>Students document real instances of their assigned fallacy found in media, conversation, or their own writing.</p>
+        </div>
+        <div class="assessment-card">
+          <h4>Portfolio</h4>
+          <div class="freq">Quarterly</div>
+          <p>Student-curated evidence of their best thinking. Includes work from the Development Key selected by the student.</p>
+        </div>
+        <div class="assessment-card">
+          <h4>Self-Reflection</h4>
+          <div class="freq">Weekly Thinking Journal</div>
+          <p>"What bias did I catch this week?" The metacognitive record is private to student and teacher.</p>
+        </div>
+        <div class="assessment-card">
+          <h4>Capstone Defense</h4>
+          <div class="freq">End of each quarter</div>
+          <p>A formal live presentation defending the quarter's project before a panel. Logic only — no fallacies.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:24px;">
+        <p><strong>Two-Keys Portfolio:</strong> All process data — drafts, failed logic chains, Fallacy Logs, Thinking Journal entries — is stored in the private Development Key and purged at year end unless the student chooses to retain it. The Credential Key issues only verified competency certificates, with no timestamp or process data visible externally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="content-section reveal" id="outcomes">
+    <div class="section-eyebrow">End-of-Year Outcomes</div>
+    <h2 class="section-title">What a Grade 7 Graduate Can Do</h2>
+    <p class="section-sub">Preparation for Grade 8 Synthesis — and for life in an information environment designed to manipulate.</p>
+    <div class="section-body">
+      <ul class="outcomes-list">
+        <li>
+          <div class="outcome-num">1</div>
+          <div class="outcome-text">
+            <strong>Build a visual argument map using the full Toulmin structure</strong>
+            <span>Claim, Grounds, Warrant, Backing, Qualifier, and Rebuttal — all explicit, all connected, all defensible.</span>
+          </div>
+        </li>
+        <li>
+          <div class="outcome-num">2</div>
+          <div class="outcome-text">
+            <strong>Write a 5-paragraph essay with counterargument and data</strong>
+            <span>Nuanced thesis, evidence integration, citation, and concession with rebuttal.</span>
+          </div>
+        </li>
+        <li>
+          <div class="outcome-num">3</div>
+          <div class="outcome-text">
+            <strong>Identify 6 major fallacies in any source</strong>
+            <span>Appeal to Authority, Cherry-Picking, Slippery Slope, False Dichotomy, False Equivalence, and Correlation/Causation confusion.</span>
+          </div>
+        </li>
+        <li>
+          <div class="outcome-num">4</div>
+          <div class="outcome-text">
+            <strong>Code a simple Boolean logic gate in Scratch</strong>
+            <span>Translating natural-language conditional rules into functional computational logic.</span>
+          </div>
+        </li>
+        <li>
+          <div class="outcome-num">5</div>
+          <div class="outcome-text">
+            <strong>Win a debate using logic, not emotion</strong>
+            <span>A live formal debate with cross-examination, defense of warrant, and zero informal fallacies.</span>
+          </div>
+        </li>
+        <li>
+          <div class="outcome-num">6</div>
+          <div class="outcome-text">
+            <strong>Recognize their own physiological response before engaging with a claim</strong>
+            <span>The Internal Heatmap is now an automatic first step — not a taught exercise, but a habit of mind.</span>
+          </div>
+        </li>
+      </ul>
+      <div class="callout blue" style="margin-top:24px;">
+        <p><strong>Ready for Grade 8 → Synthesis:</strong> Predicate Logic (∀, ∃), scientific skepticism, statistical fallacies, and the full Capstone Defense. The Toulmin Model mastered in 7th grade becomes the scaffold for everything that follows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section class="content-section reveal" id="materials">
+    <div class="section-eyebrow">Resources</div>
+    <h2 class="section-title">Materials List</h2>
+    <p class="section-sub">Per student. All tools chosen for low cost and high utility.</p>
+    <div class="section-body">
+      <div class="materials-grid">
+        <div class="material-item">Whiteboard + marker</div>
+        <div class="material-item">Graph paper notebook</div>
+        <div class="material-item">Scratch account (free)</div>
+        <div class="material-item">Lucidchart or Draw.io (free)</div>
+        <div class="material-item">Printed articles (1–2 pages/week)</div>
+        <div class="material-item">The Fallacy Detective (shared copy)</div>
+        <div class="material-item">Timer + bell</div>
+        <div class="material-item">Large paper for logic maps</div>
+        <div class="material-item">Thinking Journal (notebook)</div>
+        <div class="material-item">Colored markers for flowcharts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADE NAV -->
+  <div class="grade-nav">
+    <a href="grade-6.html" class="grade-nav-card prev">
+      <div class="direction">← Previous Grade</div>
+      <div class="grade-link-title">Grade 6 · Foundations</div>
+      <div class="grade-link-sub">Informal fallacies, pattern recognition, Internal Heatmap introduction</div>
+    </a>
+    <a href="grade-8.html" class="grade-nav-card next">
+      <div class="direction">Next Grade →</div>
+      <div class="grade-link-title">Grade 8 · Synthesis</div>
+      <div class="grade-link-sub">Predicate Logic, scientific skepticism, Capstone Defense</div>
+    </a>
+  </div>
+
+</main>
+</div>
+
+<button class="mobile-toggle" id="mobileToggle">☰</button>
+
+<script>
+  // Quarter tabs
+  function showQuarter(q, btn) {
+    document.querySelectorAll('.quarter-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.q-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + q).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Sidebar nav active on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => revealObs.observe(el));
+
+  // Mobile toggle
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('mobileToggle');
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    toggle.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+  });
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 800) { sidebar.classList.remove('open'); toggle.textContent = '☰'; }
+    });
+  });
+</script>
+</body>
+</html>
