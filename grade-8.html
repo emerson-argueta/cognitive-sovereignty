@@ -32,6 +32,9 @@
 <a href="#red-team" class="nav-item"><span class="nav-dot"></span> Advanced Red Team</a>
 <a href="#capstone" class="nav-item"><span class="nav-dot"></span> Capstone Defense</a>
 <a href="#tracks" class="nav-item"><span class="nav-dot"></span> Track Depth</a>
+<a href="#evaluation" class="nav-item"><span class="nav-dot"></span> Evaluation Primitives</a>
+<a href="#gating" class="nav-item"><span class="nav-dot"></span> Gating Criteria</a>
+<a href="#adversarial" class="nav-item"><span class="nav-dot"></span> Adversarial Exercises</a>
 <a href="#outcomes" class="nav-item"><span class="nav-dot"></span> What Grade 8 Builds</a>
 
   </div>
@@ -194,6 +197,102 @@ of thinking feel alive</div>
 </div>
 
 </section>
+<section class="content-section reveal" id="evaluation">
+<div class="eyebrow">Operational Layer · Grade 8</div>
+<h2 class="section-title">Evaluation Primitives</h2>
+<p class="section-sub">Each capability is only real when it can be demonstrated on an unfamiliar problem under no-hint conditions.</p>
+<div class="block">
+<h4>Task 1 · Study Methodology Audit</h4>
+<p><strong>Setup:</strong> Provide a real published study abstract and methodology section (or a realistic facsimile) on an unfamiliar topic. Student must evaluate the methodology for statistical fallacies — p-hacking potential, sample size adequacy, confidence interval interpretation, base rate considerations, and replication plausibility.</p>
+<ul>
+<li><strong>Pass:</strong> Student identifies at least two methodological concerns with specific explanation of why each represents a validity threat. Student distinguishes between "this study is wrong" and "this study's conclusions are weaker than stated."</li>
+<li><strong>Fail:</strong> Student accepts or rejects study based on whether the conclusion matches prior beliefs. Methodological concerns named without explanation of the statistical mechanism.</li>
+<li><strong>Failure mode to watch:</strong> Students who have memorized the names of statistical fallacies but apply them as labels rather than as analytical tools — writing "p-hacking" without explaining what the p-value threshold was or why the specific design invites manipulation.</li>
+</ul>
+</div>
+<div class="block">
+<h4>Task 2 · Red Team Construction and Dismantling</h4>
+<p><strong>Setup:</strong> Student is given a topic and must first construct a persuasive multi-layer misinformation piece — using at least one statistical manipulation, one emotional trigger, and one authoritative framing device. Then, without a break, they must produce a systematic dismantling that names every technique used.</p>
+<ul>
+<li><strong>Pass:</strong> The constructed piece would be genuinely persuasive to an uncritical reader. The dismantling accounts for every technique in the construction, with the specific logical failure identified for each.</li>
+<li><strong>Fail:</strong> Construction is obviously flawed or transparently manipulative. Dismantling is incomplete — misses the statistical manipulation or describes techniques without identifying the structural failure.</li>
+<li><strong>Failure mode to watch:</strong> Students who construct an effective piece but cannot account for all its components during dismantling — indicating they built it intuitively, not analytically, and cannot transfer the skill.</li>
+</ul>
+</div>
+<div class="block">
+<h4>Task 3 · Predicate Logic Proof</h4>
+<p><strong>Setup:</strong> Present a series of claims in an unfamiliar domain using natural language. Student must identify the implicit quantifiers (∀ / ∃), translate into formal notation, and evaluate whether the argument is logically valid given the quantifier structure.</p>
+<ul>
+<li><strong>Pass:</strong> Correct quantifier identification, accurate translation, and valid evaluation with the asymmetry of proof explicitly noted where relevant (universal claims require all cases; existential claims require one).</li>
+<li><strong>Fail:</strong> Quantifiers misidentified in natural language ("most" treated as ∀, "a study shows" treated as ∀ rather than ∃). Validity evaluation without noting proof asymmetry.</li>
+<li><strong>Failure mode to watch:</strong> Students who can perform formal notation exercises in class but revert to pre-quantifier thinking when reading natural language — they stop applying ∀/∃ analysis the moment the framing shifts to prose.</li>
+</ul>
+</div>
+<div class="block">
+<h4>Task 4 · Cherry-Pick Identification in Real Data</h4>
+<p><strong>Setup:</strong> Provide a claim and a "supporting" data excerpt. Also provide the full dataset from which the excerpt was drawn. Student must identify which data was selected, what was omitted, and restate the accurate conclusion the full dataset supports.</p>
+<ul>
+<li><strong>Pass:</strong> Student identifies the selection mechanism (what criteria determined which data appeared), names what was omitted, and produces a corrected claim that accurately represents the full dataset.</li>
+<li><strong>Fail:</strong> Student notes that data was cherry-picked without identifying what was omitted or why the omission matters. Corrected claim is vague or does not follow from the full data.</li>
+<li><strong>Failure mode to watch:</strong> Students who accept the cherry-picked framing and work within it — they may note "some data is missing" without recognizing that the missing data reverses the conclusion.</li>
+</ul>
+</div>
+</section>
+
+<section class="content-section reveal" id="gating">
+<div class="eyebrow">Operational Layer · Grade 8</div>
+<h2 class="section-title">Gating Criteria</h2>
+<p class="section-sub">What a student must demonstrate — not just complete — before advancing to Grade 9.</p>
+<div class="block">
+<h4>Required Demonstrations</h4>
+<ul>
+<li>Evaluates a study methodology for at least two specific statistical validity threats, with structural explanation of each mechanism</li>
+<li>Constructs a multi-layer misinformation piece that is genuinely persuasive, then produces a complete dismantling accounting for every technique used</li>
+<li>Correctly identifies ∀ and ∃ quantifiers in natural language prose and translates at least three claims into formal notation with accurate validity evaluation</li>
+<li>Identifies cherry-picked data selection, names the omitted evidence, and produces an accurate corrected claim from the full dataset</li>
+<li>Delivers the Capstone Defense — sustained for 15 minutes before an external panel, with no fallacies in challenged responses</li>
+<li>Writes a Capstone reflection documenting at least one belief changed by evidence during the Phase Two sequence</li>
+</ul>
+</div>
+<div class="block">
+<h4>What Does Not Count as Mastery</h4>
+<ul>
+<li>Naming statistical fallacies without explaining the specific mechanism in the specific study under evaluation</li>
+<li>Red Team construction that is transparent or unconvincing to an uncritical reader</li>
+<li>Predicate logic accuracy on worksheet exercises that does not transfer to natural language reading</li>
+<li>Identifying cherry-picking without being able to reconstruct what the full data shows</li>
+<li>A Capstone that presents correctly but collapses under panel challenge — using fallacies or hedging into vagueness when pressed</li>
+<li>A reflection that describes what was learned without identifying a specific belief revision and what caused it</li>
+</ul>
+</div>
+<div class="callout blue"><p><strong>The gating question:</strong> When given an empirical claim supported by a study, a data excerpt, and an expert opinion, can this student identify the specific statistical and logical mechanisms by which each piece of evidence could be misleading — without rejecting evidence wholesale or accepting it uncritically?</p></div>
+</section>
+
+<section class="content-section reveal" id="adversarial">
+<div class="eyebrow">Operational Layer · Grade 8</div>
+<h2 class="section-title">Adversarial Exercises</h2>
+<p class="section-sub">Sovereignty requires training against the actual conditions that undermine independent thinking.</p>
+<div class="block">
+<h4>Exercise 1 · The Constructed Scientific Consensus</h4>
+<p><strong>Setup:</strong> Present students with a well-formatted "scientific consensus" statement — complete with institutional logos, citation counts, and confident language — that contains identifiable methodological flaws. Students must evaluate it as they would any empirical claim.</p>
+<p>The phrase "the science is settled" is the most effective way to shut down predicate logic analysis in scientifically literate people. It converts a ∀ claim that requires all-cases evidence into an unquestionable authority position. Students who have been trained to respect science without being trained to evaluate it are more susceptible to this move, not less — their deference is weaponized. This exercise does not train cynicism about science. It trains the ability to hold two positions simultaneously: respect for the scientific method and willingness to evaluate any specific study's methodology.</p>
+<p><strong>What this trains:</strong> Applying statistical skepticism to claims that carry institutional authority — distinguishing between "the scientific method is reliable" and "this particular study's methodology is sound."</p>
+</div>
+<div class="block">
+<h4>Exercise 2 · Replication Crisis Simulation</h4>
+<p><strong>Setup:</strong> Present two studies on the same topic with opposite conclusions, both appearing methodologically credible. Students must evaluate both studies and produce a position statement that honestly represents the state of the evidence — including the uncertainty.</p>
+<p>The replication crisis reveals that the information environment routinely presents single studies as definitive when they are not. A student who cannot hold "the evidence is genuinely uncertain on this question" as a stable epistemic position will be forced to choose a side — and that choice will be made on non-logical grounds. This exercise trains the tolerance for uncertainty that mature epistemic reasoning requires.</p>
+<p><strong>What this trains:</strong> Calibrated uncertainty — the ability to say "the evidence does not yet support a strong conclusion" without that uncertainty being exploited into false equivalence or nihilism.</p>
+</div>
+<div class="block">
+<h4>Exercise 3 · Media Report vs. Actual Study</h4>
+<p><strong>Setup:</strong> Provide a media article reporting on a study's findings alongside the study's actual abstract and methodology. Students must identify every place the media report overstates, understates, or misframes the study's actual conclusions — and explain the predicate logic error involved in each distortion.</p>
+<p>Most students encounter empirical claims through media reports, not primary sources. The distortion between a study and its media coverage is systematic and patterned: universal claims replace existential findings, causal language replaces correlational findings, effect sizes disappear, confidence intervals vanish. Recognizing these translation errors in real examples is the practical application of everything learned in Grade 8.</p>
+<p><strong>What this trains:</strong> Reading the original source — and the specific predicate logic and statistical vocabulary to identify exactly where and how a secondary report has misrepresented the primary evidence.</p>
+</div>
+<div class="callout green"><p><strong>Why adversarial training matters:</strong> Grade 8 is the year students begin to encounter "scientific" authority as a manipulation tool — in advertising, politics, and media. The adversarial exercises do not train distrust of science; they train the specific skill of distinguishing the scientific method from any particular scientist's claim, any particular study's methodology, or any particular institution's endorsement. That distinction is the difference between a scientifically literate skeptic and a scientifically illiterate one.</p></div>
+</section>
+
 <section class="content-section reveal" id="outcomes">
 <div class="eyebrow">What Grade 8 Builds</div>
 <h2 class="section-title">Ready for Phase Three</h2>

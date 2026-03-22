@@ -606,6 +606,29 @@
   /* ── SCROLL REVEAL ────────────────────────── */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── OPERATIONAL LAYER ADDITIONS ─────────── */
+  .eyebrow {
+    font-family: var(--font-mono, monospace);
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+  }
+  .block {
+    background: var(--navy3);
+    border-left: 2px solid var(--rule);
+    padding: 20px 24px;
+    margin: 20px 0; max-width: 760px;
+  }
+  .block h4 {
+    font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--warm);
+    margin-bottom: 12px;
+  }
+  .block ul { padding-left: 18px; }
+  .block ul li { margin-bottom: 8px; font-size: 0.9rem; line-height: 1.65; }
+  .block p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 10px; }
+  .callout.green { border-left-color: var(--green); background: rgba(74,140,111,0.06); }
 </style>
 </head>
 <body>
@@ -644,6 +667,9 @@
   <div class="nav-section">
     <div class="nav-label">Assessment & Outcomes</div>
     <a href="#assessment" class="nav-item"><span class="nav-dot"></span> Mastery Assessment</a>
+    <a href="#evaluation" class="nav-item"><span class="nav-dot"></span> Evaluation Primitives</a>
+    <a href="#gating" class="nav-item"><span class="nav-dot"></span> Gating Criteria</a>
+    <a href="#adversarial" class="nav-item"><span class="nav-dot"></span> Adversarial Exercises</a>
     <a href="#outcomes" class="nav-item"><span class="nav-dot"></span> End-of-Year Outcomes</a>
     <a href="#materials" class="nav-item"><span class="nav-dot"></span> Materials</a>
   </div>
@@ -1377,6 +1403,106 @@
       <div class="callout" style="margin-top:24px;">
         <p><strong>Two-Keys Portfolio:</strong> All process data — drafts, failed logic chains, Fallacy Logs, Thinking Journal entries — is stored in the private Development Key and purged at year end unless the student chooses to retain it. The Credential Key issues only verified competency certificates, with no timestamp or process data visible externally.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="content-section reveal" id="evaluation">
+    <div class="eyebrow">Operational Layer · Grade 7</div>
+    <h2 class="section-title">Evaluation Primitives</h2>
+    <p class="section-sub">Each capability is only real when it can be demonstrated on an unfamiliar problem under no-hint conditions.</p>
+    <div class="block">
+      <h4>Task 1 · Full Toulmin on Unfamiliar Terrain</h4>
+      <p><strong>Setup:</strong> Present a contentious claim on a topic never discussed in class — drawn from current events, science, or policy. Student has 25 minutes to produce a complete Toulmin map: Claim, Grounds, Warrant, Backing, Qualifier, and Rebuttal.</p>
+      <ul>
+        <li><strong>Pass:</strong> All six components present, correctly identified, and logically connected. Rebuttal addresses the strongest counterargument, not a strawman.</li>
+        <li><strong>Fail:</strong> Any component missing, mislabeled, or disconnected. Rebuttal addresses a weak version of the opposing position.</li>
+        <li><strong>Failure mode to watch:</strong> Students who have memorized Toulmin labels but can't apply the model to unfamiliar content — they produce a map that looks correct but whose warrant doesn't actually bridge the grounds to the claim.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>Task 2 · Multi-Fallacy Deconstruction</h4>
+      <p><strong>Setup:</strong> Provide a written argument (200–300 words) containing at least three distinct fallacies — including at least one structural fallacy (non-sequitur, circular reasoning) and one emotional trigger (appeal to fear, bandwagon). Student must identify, name, and explain the structural role each fallacy plays.</p>
+      <ul>
+        <li><strong>Pass:</strong> All three fallacies identified by name, with a sentence explaining why the argument fails structurally at that point — not just that it "sounds wrong."</li>
+        <li><strong>Fail:</strong> Fallacy named without structural explanation; emotional fallacies spotted but structural ones missed; fewer than three identified.</li>
+        <li><strong>Failure mode to watch:</strong> Students who identify the fallacy label but describe why the conclusion feels wrong rather than why the logical structure breaks down — this is emotional evaluation dressed as logical analysis.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>Task 3 · Boolean Proof on Unfamiliar Claim</h4>
+      <p><strong>Setup:</strong> Present a compound logical claim using connectives (AND, OR, NOT, IF-THEN) in a domain the student hasn't studied. Student must evaluate the truth conditions and determine whether the claim is valid, invalid, or contingent — showing their work.</p>
+      <ul>
+        <li><strong>Pass:</strong> Correct truth evaluation with each step shown. Student distinguishes between the claim being logically valid and being factually true.</li>
+        <li><strong>Fail:</strong> Conclusion reached without showing work; validity and factual truth conflated; errors in basic AND/OR/NOT operations.</li>
+        <li><strong>Failure mode to watch:</strong> Students who get the right answer through intuition and then construct the Boolean steps backward — they cannot transfer the skill because they never actually used it.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>Task 4 · Steelman Exercise</h4>
+      <p><strong>Setup:</strong> Student selects a position they personally disagree with. They have 20 minutes to construct the strongest possible version of that position — not a caricature, but an argument they would be genuinely hard-pressed to refute.</p>
+      <ul>
+        <li><strong>Pass:</strong> The produced argument uses valid evidence and structure. It would be persuasive to a neutral reader. The student can articulate why it is difficult to counter.</li>
+        <li><strong>Fail:</strong> The argument is a strawman with a polite surface. The student includes obvious flaws, uses weak sources, or produces a rebuttal in the same document.</li>
+        <li><strong>Failure mode to watch:</strong> Students who produce a technically correct Toulmin structure for a position they've secretly undermined by selecting only the weakest available warrants — steelmanning the form while sandbagging the content.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="content-section reveal" id="gating">
+    <div class="eyebrow">Operational Layer · Grade 7</div>
+    <h2 class="section-title">Gating Criteria</h2>
+    <p class="section-sub">What a student must demonstrate — not just complete — before advancing to Grade 8.</p>
+    <div class="block">
+      <h4>Required Demonstrations</h4>
+      <ul>
+        <li>Produces a complete, accurate Toulmin map on a novel topic without prompting for individual components</li>
+        <li>Identifies and structurally explains at least three distinct fallacies in an unfamiliar argument</li>
+        <li>Evaluates a Boolean compound claim correctly, showing each logical step and distinguishing validity from factual truth</li>
+        <li>Produces a steelman argument for a position they oppose that a neutral evaluator rates as genuinely persuasive</li>
+        <li>Demonstrates the Internal Heatmap Protocol on a charged topic — naming the physiological response, waiting for the Logic Gate, then analyzing without the emotional framing contaminating the structure</li>
+        <li>Completes at least one Red Team exercise with documented debrief and anchor phrase intact</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>What Does Not Count as Mastery</h4>
+      <ul>
+        <li>Correctly labeling Toulmin components on a familiar example practiced in class</li>
+        <li>Identifying fallacies by name without explaining the structural failure</li>
+        <li>Completing a Boolean worksheet without being able to transfer the logic to a new context</li>
+        <li>Producing a steelman that a neutral reader would recognize as half-hearted or structured to fail</li>
+        <li>Self-reporting metacognitive awareness without demonstrating it under a charged or surprising condition</li>
+        <li>High Thinking Journal volume with no evidence of changed analysis over time</li>
+      </ul>
+    </div>
+    <div class="callout blue">
+      <p><strong>The gating question:</strong> When confronted with an argument on an unfamiliar topic that triggers a strong emotional response, can this student pause, name the response, apply the Toulmin structure accurately, and identify any fallacies — without the emotional charge distorting the analysis?</p>
+    </div>
+  </section>
+
+  <section class="content-section reveal" id="adversarial">
+    <div class="eyebrow">Operational Layer · Grade 7</div>
+    <h2 class="section-title">Adversarial Exercises</h2>
+    <p class="section-sub">Sovereignty requires training against the actual conditions that undermine independent thinking.</p>
+    <div class="block">
+      <h4>Exercise 1 · Social Consensus Pressure</h4>
+      <p><strong>Setup:</strong> After a student has completed a Toulmin analysis and reached a defensible conclusion, the facilitator informs them that "the whole group agreed on the opposite position — why do you think you're right when everyone else disagrees?"</p>
+      <p>The social consensus pressure is the most effective manipulation lever for 12–13 year olds. It bypasses logical processing entirely and activates deep conformity mechanisms. No logical argument is being made — the pressure is purely social. Students who cannot distinguish between "everyone believes X" and "X is logically supported" will abandon a correct analysis to avoid social discomfort. This exercise makes the mechanism visible in a controlled environment before students encounter it in real social contexts.</p>
+      <p><strong>What this trains:</strong> Holding a logically defensible position under social pressure without dismissing or demeaning those who hold the opposing view — the distinction between epistemic confidence and social aggression.</p>
+    </div>
+    <div class="block">
+      <h4>Exercise 2 · The Half-True Argument</h4>
+      <p><strong>Setup:</strong> Present an argument where every individual premise is factually accurate but the conclusion does not follow. All cited sources check out. Students must identify where the logical structure fails despite the premises being true.</p>
+      <p>Most misinformation does not involve outright lies — it involves true premises assembled in a structure that does not support the intended conclusion. Students who only check facts will pass this argument because the facts are correct. Only students who evaluate the logical relationship between premises and conclusion will catch it. This is the core skill that separates fact-checking from argument analysis.</p>
+      <p><strong>What this trains:</strong> Distinguishing factual accuracy from logical validity — the recognition that a set of true statements can be arranged to produce a false conclusion.</p>
+    </div>
+    <div class="block">
+      <h4>Exercise 3 · Position Reversal Under Peer Pressure</h4>
+      <p><strong>Setup:</strong> A student defends a position in a small group. Two peers (briefed in advance) systematically express disappointment, frustration, or social exclusion signals — not logical counterarguments — until the student either holds their position or reverses it. The debrief examines what actually caused the reversal or the hold.</p>
+      <p>The goal is not to make students rigid or combative. The goal is to help them notice when they are changing their stated position for social reasons versus logical ones — and to give them language to navigate that situation with integrity. "I hear that you disagree, but I haven't heard a reason to change my analysis" is a skill that must be rehearsed, not just described.</p>
+      <p><strong>What this trains:</strong> The internal distinction between updating a position because of new evidence or better arguments versus capitulating because of social discomfort — and the vocabulary to hold that distinction out loud.</p>
+    </div>
+    <div class="callout green">
+      <p><strong>Why adversarial training matters:</strong> Grade 7 is the year when peer social pressure reaches its developmental peak. The adversarial exercises are calibrated to this: they train students to recognize the exact manipulation mechanisms they are most neurologically susceptible to right now. Sovereignty in argument is not about being immune to social feedback — it is about knowing when social feedback is doing the work that logic should be doing instead.</p>
     </div>
   </section>
 
