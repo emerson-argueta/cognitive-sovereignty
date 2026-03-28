@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embodied Sovereignty · Physical Sovereignty — Cognitive Sovereignty</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:    #0f1923;
+  --navy2:   #162030;
+  --navy3:   #1e2d3d;
+  --navy4:   #243344;
+  --cream:   #f0ead8;
+  --cream2:  #e8dfc8;
+  --warm:    #c8b99a;
+  --muted:   #6e7e8e;
+  --rule:    rgba(200,185,154,0.15);
+  --accent:  #7a9e6e;   /* earthy green — land/nature */
+  --accent2: #9dbf8a;
+  --gold:    #c9a84c;
+  --sidebar: 260px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--cream);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* ── LAYOUT ──────────────────────────────── */
+.layout { display: flex; min-height: 100vh; }
+
+/* ── SIDEBAR ─────────────────────────────── */
+.sidebar {
+  width: var(--sidebar);
+  min-width: var(--sidebar);
+  background: var(--navy2);
+  border-right: 1px solid var(--rule);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--rule); }
+
+.sidebar-header {
+  padding: 24px 20px 18px;
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0;
+  background: var(--navy2); z-index: 10;
+}
+.back-link {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  margin-bottom: 14px;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--accent2); }
+.back-link::before { content: '←'; font-size: 11px; }
+
+.sidebar-module {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--cream); line-height: 1.2;
+  margin-bottom: 6px;
+}
+.sidebar-phase {
+  font-size: 11px; color: var(--muted);
+}
+
+.nav-section { padding: 18px 20px 6px; }
+.nav-label {
+  font-family: var(--font-mono);
+  font-size: 8px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.nav-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 6px 0;
+  font-size: 12px; color: var(--warm);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.15s;
+  line-height: 1.4;
+}
+.nav-item:hover { color: var(--accent2); }
+.nav-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 6px; flex-shrink: 0;
+}
+.nav-divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 8px 20px;
+}
+
+.grade-nav {
+  padding: 10px 20px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.grade-nav-item {
+  display: flex; align-items: center;
+  gap: 8px; padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.grade-nav-item:hover {
+  background: var(--navy3);
+  color: var(--cream);
+}
+.grade-nav-item .gnum {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  width: 20px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 20px;
+  font-size: 10px;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── MAIN ─────────────────────────────────── */
+.main {
+  margin-left: var(--sidebar);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero {
+  padding: 72px 64px 56px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(122,158,110,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Decorative terrain lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 48px; top: 40px;
+  width: 160px; height: 120px;
+  background-image:
+    repeating-linear-gradient(
+      -20deg,
+      transparent,
+      transparent 8px,
+      rgba(122,158,110,0.08) 8px,
+      rgba(122,158,110,0.08) 9px
+    );
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.hero-breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.hero-breadcrumb span { color: var(--accent); }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  padding: 5px 12px;
+  border: 1px solid rgba(122,158,110,0.3);
+  border-radius: 20px;
+  background: rgba(122,158,110,0.06);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 10px;
+  max-width: 640px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--warm);
+  margin-bottom: 28px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: var(--warm);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  color: var(--accent2);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── CONTENT SECTIONS ─────────────────────── */
+.content {
+  padding: 0 64px 80px;
+}
+
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section:last-child { border-bottom: none; }
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-intro {
+  font-size: 15px;
+  color: var(--warm);
+  max-width: 620px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+/* ── PHILOSOPHY CALLOUT ──────────────────── */
+.philosophy-block {
+  background: linear-gradient(135deg, rgba(122,158,110,0.08) 0%, rgba(201,168,76,0.05) 100%);
+  border: 1px solid rgba(122,158,110,0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+}
+.philosophy-block p {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.7;
+}
+.philosophy-block cite {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 12px;
+  font-style: normal;
+}
+
+/* ── GRADE BANDS ─────────────────────────── */
+.grade-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grade-band {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.grade-band:last-child { border-bottom: none; }
+
+.band-label {
+  padding: 28px 24px;
+  background: var(--navy2);
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.band-grades {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700;
+  color: var(--cream);
+}
+.band-name {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.band-age {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.band-content {
+  padding: 24px 28px;
+  background: var(--navy3);
+}
+.band-content h4 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.band-content p {
+  font-size: 13px;
+  color: var(--warm);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.skill-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(122,158,110,0.12);
+  border: 1px solid rgba(122,158,110,0.25);
+  color: var(--accent2);
+}
+
+/* ── SKILL DOMAINS ───────────────────────── */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.domain-card {
+  background: var(--navy2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.domain-card:hover { border-color: rgba(122,158,110,0.35); }
+
+.domain-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.domain-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.domain-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.domain-skills {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.domain-skills li {
+  font-size: 12px;
+  color: var(--warm);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.domain-skills li::before {
+  content: '·';
+  position: absolute; left: 0;
+  color: var(--accent);
+}
+
+/* ── FRAMING TABLE ───────────────────────── */
+.framing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.framing-table th {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--navy2);
+}
+.framing-table td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--warm);
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.framing-table tr:last-child td { border-bottom: none; }
+.framing-table tr:hover td { background: rgba(255,255,255,0.02); }
+.framing-table td:first-child {
+  color: var(--cream);
+  font-weight: 500;
+  width: 28%;
+}
+.framing-table td:nth-child(2) {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  width: 20%;
+}
+
+/* ── CONNECTION DIAGRAM ──────────────────── */
+.connection-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+  margin: 8px 0;
+}
+.conn-box {
+  background: var(--navy2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 20px 22px;
+}
+.conn-box h4 {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.conn-box ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.conn-box li {
+  font-size: 11px; color: var(--muted);
+  padding-left: 12px; position: relative;
+}
+.conn-box li::before { content: '·'; position: absolute; left: 0; color: var(--accent); }
+
+.conn-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 20px;
+  color: var(--accent);
+}
+.conn-arrow-line {
+  width: 40px; height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+.conn-arrow-label {
+  font-family: var(--font-mono);
+  font-size: 8px; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── ASSESSMENT BAND ─────────────────────── */
+.assessment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+.assess-card {
+  background: var(--navy3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 22px;
+}
+.assess-card h4 {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.assess-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.assess-num {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* ── INTEGRATION NOTE ────────────────────── */
+.integration-note {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-top: 32px;
+}
+.integration-note h4 {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.integration-note p {
+  font-size: 13px;
+  color: var(--warm);
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .hero, .content { padding-left: 28px; padding-right: 28px; }
+  .grade-band { grid-template-columns: 1fr; }
+  .band-label { border-right: none; border-bottom: 1px solid var(--rule); }
+  .assessment-grid { grid-template-columns: 1fr; }
+  .connection-grid { grid-template-columns: 1fr; }
+  .conn-arrow { transform: rotate(90deg); padding: 12px 0; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="back-link">Main Curriculum</a>
+    <div class="sidebar-module">Cross-Grade Module</div>
+    <div class="sidebar-title">Embodied Sovereignty</div>
+    <div class="sidebar-phase">Nomadic Skills · All Grades</div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">On This Page</div>
+    <a href="#philosophy" class="nav-item"><span class="nav-dot"></span> Core Philosophy</a>
+    <a href="#grade-bands" class="nav-item"><span class="nav-dot"></span> Grade Progression</a>
+    <a href="#skill-domains" class="nav-item"><span class="nav-dot"></span> Skill Domains</a>
+    <a href="#framing" class="nav-item"><span class="nav-dot"></span> Framing Approach</a>
+    <a href="#connections" class="nav-item"><span class="nav-dot"></span> Curriculum Connections</a>
+    <a href="#assessment" class="nav-item"><span class="nav-dot"></span> Assessment</a>
+  </div>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-section">
+    <div class="nav-label">Grade Pages</div>
+  </div>
+  <div class="grade-nav">
+    <a href="grade-prek.html#embodied" class="grade-nav-item"><span class="gnum">PK</span> Pre-K · Wonder</a>
+    <a href="grade-k.html#embodied" class="grade-nav-item"><span class="gnum">K</span> Kindergarten · Name</a>
+    <a href="grade-1.html#embodied" class="grade-nav-item"><span class="gnum">1</span> Grade 1 · Observe</a>
+    <a href="grade-2.html#embodied" class="grade-nav-item"><span class="gnum">2</span> Grade 2 · Pattern</a>
+    <a href="grade-3.html#embodied" class="grade-nav-item"><span class="gnum">3</span> Grade 3 · Question</a>
+    <a href="grade-4.html#embodied" class="grade-nav-item"><span class="gnum">4</span> Grade 4 · Systems</a>
+    <a href="grade-5.html#embodied" class="grade-nav-item"><span class="gnum">5</span> Grade 5 · Reason</a>
+    <a href="grade-6.html#embodied" class="grade-nav-item"><span class="gnum">6</span> Grade 6 · Foundations</a>
+    <a href="grade-7.html#embodied" class="grade-nav-item"><span class="gnum">7</span> Grade 7 · Structure</a>
+    <a href="grade-8.html#embodied" class="grade-nav-item"><span class="gnum">8</span> Grade 8 · Synthesis</a>
+    <a href="grade-9.html#embodied" class="grade-nav-item"><span class="gnum">9</span> Grade 9 · Integration</a>
+    <a href="grade-10.html#embodied" class="grade-nav-item"><span class="gnum">10</span> Grade 10 · Deepening</a>
+    <a href="grade-11.html#embodied" class="grade-nav-item"><span class="gnum">11</span> Grade 11 · Specialization</a>
+    <a href="grade-12.html#embodied" class="grade-nav-item"><span class="gnum">12</span> Grade 12 · Capstone</a>
+  </div>
+
+  <div class="sidebar-footer">
+    Embodied sovereignty is not a survival course. It is the physical expression of the same principle that runs through every grade: you are not dependent on others to think, and you are not dependent on others to live.
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-breadcrumb">Cognitive Sovereignty · <span>Cross-Grade Module</span></div>
+
+    <div class="hero-eyebrow">
+      ◈ Physical Sovereignty Layer
+    </div>
+
+    <h1>Embodied<br>Sovereignty</h1>
+    <div class="hero-subtitle">The land cannot be hacked. The body cannot be shut down.</div>
+
+    <p class="hero-desc">
+      A cross-grade module integrating nomadic and survival skills into the Cognitive Sovereignty curriculum. Where cognitive sovereignty trains independent reasoning, embodied sovereignty trains independent living — the physical complement to intellectual freedom.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">PreK</div>
+        <div class="stat-label">Begins</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Ends · Grade 12</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Skill Domains</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Shelf Life</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- PHILOSOPHY -->
+    <section class="section" id="philosophy">
+      <div class="section-eyebrow">§ 1 · Foundational Principle</div>
+      <h2>Why Embodied Sovereignty Belongs Here</h2>
+      <p class="section-intro">
+        The cognitive sovereignty framework is built on a single premise: a free person must be able to think for themselves. But thinking requires living. A citizen who reasons brilliantly but cannot source water, food, or shelter outside a functioning supply chain remains dependent — not on an information system, but on a physical one. Both are vulnerabilities.
+      </p>
+
+      <div class="philosophy-block">
+        <p>
+          "Embodied sovereignty is not what you do when civilization fails. It is what you are when it succeeds — a person whose participation in systems is chosen, not compelled. The difference between a free citizen and a dependent one is not ideology. It is capability."
+        </p>
+        <cite>— Cognitive Sovereignty Framework · Physical Layer Rationale</cite>
+      </div>
+
+      <p class="section-intro">
+        This module does not teach fear of collapse. It teaches the same thing every other module teaches: the removal of unnecessary dependency. A student who can identify edible plants has not prepared for the apocalypse. They have deepened their relationship with the land, expanded their autonomy, and internalized the sovereign principle in their body, not just their mind.
+      </p>
+    </section>
+
+    <!-- GRADE BANDS -->
+    <section class="section" id="grade-bands">
+      <div class="section-eyebrow">§ 2 · Grade Progression</div>
+      <h2>Skills by Developmental Stage</h2>
+      <p class="section-intro">
+        Embodied sovereignty is introduced as wonder and grows into competence. The progression mirrors the cognitive curriculum: from sensory experience in early grades to philosophical integration at the secondary level.
+      </p>
+
+      <div class="grade-bands">
+
+        <div class="grade-band">
+          <div class="band-label">
+            <div class="band-grades">PreK – 2</div>
+            <div class="band-name">Wonder</div>
+            <div class="band-age">Ages 4–8</div>
+          </div>
+          <div class="band-content">
+            <h4>The World as Teacher</h4>
+            <p>
+              Children at this stage learn through sensory immersion. The goal is not skill acquisition but relationship — with soil, weather, plants, water, and fire. Nature is presented as a curriculum, not a backdrop.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Plant identification (local)</span>
+              <span class="skill-tag">Weather observation</span>
+              <span class="skill-tag">Water sourcing basics</span>
+              <span class="skill-tag">Soil and composting</span>
+              <span class="skill-tag">Fire awareness (supervised)</span>
+              <span class="skill-tag">Seasonal rhythms</span>
+              <span class="skill-tag">Animal tracking basics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grade-band">
+          <div class="band-label">
+            <div class="band-grades">3 – 5</div>
+            <div class="band-name">Competence</div>
+            <div class="band-age">Ages 8–11</div>
+          </div>
+          <div class="band-content">
+            <h4>Practical Outdoor Skills</h4>
+            <p>
+              Children begin to do, not just observe. Skills are framed as projects and adventures, not emergency preparation. The connection to the cognitive curriculum begins here: systems thinking applied to ecosystems, observation leading to inference.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Foraging (edible plants)</span>
+              <span class="skill-tag">Fire starting (flint &amp; steel)</span>
+              <span class="skill-tag">Water filtration</span>
+              <span class="skill-tag">Basic shelter building</span>
+              <span class="skill-tag">Compass &amp; map reading</span>
+              <span class="skill-tag">Knots and cordage</span>
+              <span class="skill-tag">Preserving food (drying, salting)</span>
+              <span class="skill-tag">Night navigation (stars)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grade-band">
+          <div class="band-label">
+            <div class="band-grades">6 – 8</div>
+            <div class="band-name">Systems</div>
+            <div class="band-age">Ages 11–14</div>
+          </div>
+          <div class="band-content">
+            <h4>Ecology as Infrastructure</h4>
+            <p>
+              Skills are now understood as systems. Students study how natural environments function as infrastructure — water cycles, food webs, climate patterns — and begin connecting nomadic skills to the broader sovereignty framework. Field medicine is introduced. Multi-day wilderness exercises begin.
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Field medicine &amp; wound care</span>
+              <span class="skill-tag">Low-tech agriculture</span>
+              <span class="skill-tag">Seed saving</span>
+              <span class="skill-tag">Trapping &amp; fishing</span>
+              <span class="skill-tag">Natural building materials</span>
+              <span class="skill-tag">Water sanitation</span>
+              <span class="skill-tag">Herbal remedies (local flora)</span>
+              <span class="skill-tag">Multi-day expedition planning</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grade-band">
+          <div class="band-label">
+            <div class="band-grades">9 – 12</div>
+            <div class="band-name">Integration</div>
+            <div class="band-age">Ages 14–18</div>
+          </div>
+          <div class="band-content">
+            <h4>Sovereignty as Philosophy</h4>
+            <p>
+              Senior students integrate physical skills with the intellectual framework of the curriculum. They examine why these skills matter historically, geopolitically, and personally. Capstone projects involve genuine extended self-sufficiency — planned, executed, and analyzed. The question is no longer "can I do this?" but "what does it mean that I can?"
+            </p>
+            <div class="skill-tags">
+              <span class="skill-tag">Extended wilderness self-sufficiency</span>
+              <span class="skill-tag">Community food production</span>
+              <span class="skill-tag">Blacksmithing &amp; metalwork (intro)</span>
+              <span class="skill-tag">Leather &amp; textile skills</span>
+              <span class="skill-tag">Childbirth assistance (theory)</span>
+              <span class="skill-tag">Community security &amp; conflict resolution</span>
+              <span class="skill-tag">Micro-power generation (solar, water)</span>
+              <span class="skill-tag">Teaching others</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILL DOMAINS -->
+    <section class="section" id="skill-domains">
+      <div class="section-eyebrow">§ 3 · Core Skill Domains</div>
+      <h2>Six Pillars of Physical Sovereignty</h2>
+      <p class="section-intro">
+        Embodied sovereignty rests on six domains, each mapped to a fundamental human need. Mastery across all six makes a person genuinely independent of supply chains.
+      </p>
+
+      <div class="domain-grid">
+
+        <div class="domain-card">
+          <div class="domain-icon">💧</div>
+          <h3>Water</h3>
+          <p>The first dependency. No other skill matters if this one fails.</p>
+          <ul class="domain-skills">
+            <li>Locating water in terrain</li>
+            <li>Filtration without equipment</li>
+            <li>Purification (boiling, solar)</li>
+            <li>Rainwater collection</li>
+            <li>Reading watershed geography</li>
+          </ul>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-icon">🌿</div>
+          <h3>Food</h3>
+          <p>Foraging, hunting, growing, preserving — the full chain from land to body.</p>
+          <ul class="domain-skills">
+            <li>Edible plant identification (regional)</li>
+            <li>Hunting, trapping, fishing</li>
+            <li>Low-input agriculture</li>
+            <li>Food preservation without refrigeration</li>
+            <li>Seed saving and propagation</li>
+          </ul>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-icon">🔥</div>
+          <h3>Fire &amp; Shelter</h3>
+          <p>Thermal regulation — the skill that most distinguishes human capability from animal vulnerability.</p>
+          <ul class="domain-skills">
+            <li>Fire without modern tools</li>
+            <li>Primitive shelter construction</li>
+            <li>Reading micro-climates</li>
+            <li>Natural insulation materials</li>
+            <li>Passive heating and cooling</li>
+          </ul>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-icon">🧭</div>
+          <h3>Navigation</h3>
+          <p>Movement without infrastructure. The ability to know where you are without being told.</p>
+          <ul class="domain-skills">
+            <li>Celestial navigation</li>
+            <li>Terrain reading</li>
+            <li>Map and compass</li>
+            <li>Dead reckoning</li>
+            <li>Weather pattern reading</li>
+          </ul>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-icon">🩺</div>
+          <h3>Medicine</h3>
+          <p>The sovereign body can care for itself and others without institutional support.</p>
+          <ul class="domain-skills">
+            <li>Wound care and infection management</li>
+            <li>Fracture stabilization</li>
+            <li>Herbal and natural remedies</li>
+            <li>Sanitation and disease prevention</li>
+            <li>Childbirth assistance (senior level)</li>
+          </ul>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-icon">🤝</div>
+          <h3>Community</h3>
+          <p>No individual is fully sovereign. Community skills multiply individual capability and create collective resilience.</p>
+          <ul class="domain-skills">
+            <li>Conflict resolution without authority</li>
+            <li>Skill trading and economic organization</li>
+            <li>Security without police</li>
+            <li>Leadership and decision-making</li>
+            <li>Teaching and knowledge transfer</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FRAMING -->
+    <section class="section" id="framing">
+      <div class="section-eyebrow">§ 4 · Pedagogical Framing</div>
+      <h2>How to Teach This Without Fear</h2>
+      <p class="section-intro">
+        The framing of this module is critical. Survival-as-fear produces anxious students. Survival-as-capability produces sovereign ones. Every skill in this module is introduced through one of three frames, never through collapse scenarios.
+      </p>
+
+      <table class="framing-table">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Wrong Frame</th>
+            <th>Right Frame</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fire starting</td>
+            <td>When the grid goes down</td>
+            <td>The oldest human technology — you are connecting to 400,000 years of knowledge</td>
+          </tr>
+          <tr>
+            <td>Foraging</td>
+            <td>If food supply collapses</td>
+            <td>Your ancestors fed themselves from this land for millennia — you are recovering that relationship</td>
+          </tr>
+          <tr>
+            <td>Water filtration</td>
+            <td>In case of emergency</td>
+            <td>Understanding water — where it comes from, what it carries, how to trust it — is fundamental ecological literacy</td>
+          </tr>
+          <tr>
+            <td>Shelter building</td>
+            <td>If you're stranded</td>
+            <td>Architecture begins here: understanding what keeps a body warm and dry is the root of all built environment</td>
+          </tr>
+          <tr>
+            <td>Navigation</td>
+            <td>When GPS fails</td>
+            <td>Reading landscape and sky is a lost art that reconnects you to the actual world rather than a representation of it</td>
+          </tr>
+          <tr>
+            <td>Field medicine</td>
+            <td>When hospitals are unavailable</td>
+            <td>Understanding the body — how it heals, what it needs, how to support it — is the most intimate form of self-knowledge</td>
+          </tr>
+          <tr>
+            <td>Community organization</td>
+            <td>Social breakdown scenarios</td>
+            <td>Human beings have always organized themselves — studying how is studying political philosophy from the ground up</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="integration-note">
+        <h4>⚑ Framing Note for Educators</h4>
+        <p>
+          Students who ask "why do we need this if everything works fine?" have asked the most important question in the module. The answer is not "because it might not." The answer is: "Because a skill you have chosen to learn is different from a dependency you were born into. One is freedom, the other is circumstance." That distinction — chosen capability versus inherited dependency — is the heart of the entire cognitive sovereignty project.
+        </p>
+      </div>
+
+      <div class="integration-note">
+        <h4>⚑ Who Teaches This</h4>
+        <p>
+          Embodied sovereignty is not taught by classroom facilitators. It is taught by practitioners: wilderness guides, farmers, herbalists, EMTs, traditional craftspeople, and others who carry these skills as lived knowledge. Schools draw from the same practitioner networks already established for Phase Three vocational apprenticeships — no separate teacher pipeline is required. The facilitator's role is to connect students with the right practitioners and ensure the philosophical framing is maintained. See the <a href="index.html#teacher-supply" style="color:inherit;text-decoration:underline;">Teacher Supply section</a> of the main curriculum for context.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONNECTIONS -->
+    <section class="section" id="connections">
+      <div class="section-eyebrow">§ 5 · Curriculum Integration</div>
+      <h2>How This Module Connects to the Wider Framework</h2>
+      <p class="section-intro">
+        Embodied sovereignty is not an add-on. It reinforces and is reinforced by every other element of the cognitive sovereignty curriculum.
+      </p>
+
+      <div class="connection-grid">
+        <div class="conn-box">
+          <h4>Cognitive Sovereignty Core</h4>
+          <ul>
+            <li>Independent reasoning</li>
+            <li>Resistance to manipulation</li>
+            <li>Logical structure and argument</li>
+            <li>Epistemic humility</li>
+            <li>Systems thinking</li>
+          </ul>
+        </div>
+        <div class="conn-arrow">
+          <div class="conn-arrow-line"></div>
+          <div class="conn-arrow-label">Extends into</div>
+          <div class="conn-arrow-line"></div>
+        </div>
+        <div class="conn-box">
+          <h4>Embodied Sovereignty</h4>
+          <ul>
+            <li>Independent living capacity</li>
+            <li>Resistance to supply chain dependency</li>
+            <li>Physical systems understanding</li>
+            <li>Ecological observation and inference</li>
+            <li>Community as distributed system</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="integration-note" style="margin-top:24px;">
+        <h4>⚑ The Sovereign Stack Connection</h4>
+        <p>
+          In the broader sovereignty framework, this module supplies the individual physical layer that the Sovereign Stack addresses at the national level. A nation that is food and water sovereign is the macro expression of a citizen who can feed and hydrate themselves. The curriculum teaches both — the student understands their own body as a microcosm of the state, and the state as a macrocosm of the individual. Neither can be free without physical self-sufficiency.
+        </p>
+      </div>
+    </section>
+
+    <!-- ASSESSMENT -->
+    <section class="section" id="assessment">
+      <div class="section-eyebrow">§ 6 · Assessment Philosophy</div>
+      <h2>How Competence is Measured</h2>
+      <p class="section-intro">
+        Embodied sovereignty cannot be assessed by written examination. Competence here is demonstrated, not described. Assessment is practical, cumulative, and community-witnessed.
+      </p>
+
+      <div class="assessment-grid">
+        <div class="assess-card">
+          <div class="assess-num">Do</div>
+          <h4>Demonstration</h4>
+          <p>Skills are assessed by performing them under realistic conditions. A student does not write about starting a fire. They start one, in the rain, with materials they gathered themselves.</p>
+        </div>
+        <div class="assess-card">
+          <div class="assess-num">Teach</div>
+          <h4>Knowledge Transfer</h4>
+          <p>True mastery is demonstrated by teaching. Senior students are assessed in part by their ability to transmit skills to younger cohorts. This also builds the community domain.</p>
+        </div>
+        <div class="assess-card">
+          <div class="assess-num">Live</div>
+          <h4>Extended Demonstration</h4>
+          <p>At the secondary level, multi-day self-sufficiency exercises serve as capstone assessments. Students plan, execute, and debrief extended periods of reduced infrastructure dependence.</p>
+        </div>
+      </div>
+
+      <div class="integration-note" style="margin-top:24px; border-color: rgba(122,158,110,0.2); background: rgba(122,158,110,0.04);">
+        <h4>⚑ On Grading Physical Skills</h4>
+        <p>
+          Competence in embodied sovereignty is not graded against a peer cohort. It is assessed against a standard: can this student do this thing in conditions where it matters? A student who can light a fire in a fireplace but not in wind has not achieved the standard. The bar is real-world utility, not classroom performance. This is consistent with the cognitive sovereignty principle that knowledge is only sovereign if it is genuinely available — not stored behind dependency on ideal conditions.
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+</main>
+
+</div><!-- /layout -->
+</body>
+</html>
